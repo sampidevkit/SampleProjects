@@ -19,6 +19,8 @@
                 <sourceRootElem>config</sourceRootElem>
                 <sourceRootElem>library</sourceRootElem>
                 <sourceRootElem>XCLibrary</sourceRootElem>
+                <sourceRootElem>../Library</sourceRootElem>
+                <sourceRootElem>../../Library</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

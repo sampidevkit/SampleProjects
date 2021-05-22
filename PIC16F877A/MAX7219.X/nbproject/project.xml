@@ -18,6 +18,7 @@
                 <sourceRootElem>library</sourceRootElem>
                 <sourceRootElem>XCLibrary</sourceRootElem>
                 <sourceRootElem>mcc_generated_files</sourceRootElem>
+                <sourceRootElem>../../Library</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

@@ -12,6 +12,12 @@
         <itemPath>config/LM35_Cfg.h</itemPath>
         <itemPath>config/TextLCD_Cfg.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="XCLibrary" displayName="Library" projectFiles="true">
+        <itemPath>../../Library/LM35.h</itemPath>
+        <itemPath>../../Library/LibDef.h</itemPath>
+        <itemPath>../../Library/TextLCD.h</itemPath>
+        <itemPath>../../Library/TickTimer.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
@@ -21,12 +27,6 @@
         <itemPath>mcc_generated_files/device_config.h</itemPath>
         <itemPath>mcc_generated_files/tmr1.h</itemPath>
         <itemPath>mcc_generated_files/adc.h</itemPath>
-      </logicalFolder>
-      <logicalFolder name="XCLibrary" displayName="XCLibrary" projectFiles="true">
-        <itemPath>XCLibrary/LM35.h</itemPath>
-        <itemPath>XCLibrary/TextLCD.h</itemPath>
-        <itemPath>XCLibrary/TickTimer.h</itemPath>
-        <itemPath>XCLibrary/LibDef.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -39,6 +39,11 @@
       <logicalFolder name="app" displayName="app" projectFiles="true">
         <itemPath>app/libcomp.c</itemPath>
       </logicalFolder>
+      <logicalFolder name="XCLibrary" displayName="Library" projectFiles="true">
+        <itemPath>../../Library/TickTimer.c</itemPath>
+        <itemPath>../../Library/TextLCD.c</itemPath>
+        <itemPath>../../Library/LM35.c</itemPath>
+      </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
@@ -48,11 +53,6 @@
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
         <itemPath>mcc_generated_files/adc.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="XCLibrary" displayName="XCLibrary" projectFiles="true">
-        <itemPath>XCLibrary/LM35.c</itemPath>
-        <itemPath>XCLibrary/TextLCD.c</itemPath>
-        <itemPath>XCLibrary/TickTimer.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -72,6 +72,8 @@
     <Elem>library</Elem>
     <Elem>mcc_generated_files</Elem>
     <Elem>XCLibrary</Elem>
+    <Elem>../Library</Elem>
+    <Elem>../../Library</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -125,7 +127,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
-                  value="app;config;XCLibrary;mcc_generated_files"/>
+                  value="app;config;mcc_generated_files;..\..\Library"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
@@ -141,9 +143,9 @@
         <property key="optimization-level" value="-O2"/>
         <property key="optimization-speed" value="false"/>
         <property key="optimization-stable-enable" value="false"/>
-        <property key="pack-struct" value="true"/>
         <property key="preprocess-assembler" value="true"/>
         <property key="short-enums" value="true"/>
+        <property key="tentative-definitions" value=""/>
         <property key="undefine-macros" value=""/>
         <property key="use-cci" value="false"/>
         <property key="use-iar" value="false"/>
@@ -225,6 +227,13 @@
                   value="toolpack.updateoptions.uselatestoolpack"/>
         <property key="toolpack.updateoptions.packversion"
                   value="Press to select which tool pack to use"/>
+        <property key="tracecontrol.include.timestamp" value="summarydataenabled"/>
+        <property key="tracecontrol.select" value="0"/>
+        <property key="tracecontrol.stallontracebufferfull" value="false"/>
+        <property key="tracecontrol.timestamp" value="0"/>
+        <property key="tracecontrol.tracebufmax" value="546000"/>
+        <property key="tracecontrol.tracefile" value="defmplabxtrace.log"/>
+        <property key="tracecontrol.traceresetonrun" value="false"/>
         <property key="uart0io.output" value="window"/>
         <property key="uart0io.outputfile" value=""/>
         <property key="uart0io.uartioenabled" value="false"/>
@@ -685,6 +694,13 @@
                   value="toolpack.updateoptions.uselatestoolpack"/>
         <property key="toolpack.updateoptions.packversion"
                   value="Press to select which tool pack to use"/>
+        <property key="tracecontrol.include.timestamp" value="summarydataenabled"/>
+        <property key="tracecontrol.select" value="0"/>
+        <property key="tracecontrol.stallontracebufferfull" value="false"/>
+        <property key="tracecontrol.timestamp" value="0"/>
+        <property key="tracecontrol.tracebufmax" value="546000"/>
+        <property key="tracecontrol.tracefile" value="defmplabxtrace.log"/>
+        <property key="tracecontrol.traceresetonrun" value="false"/>
         <property key="uart0io.output" value="window"/>
         <property key="uart0io.outputfile" value=""/>
         <property key="uart0io.uartioenabled" value="false"/>
@@ -1119,6 +1135,7 @@
       </Tool>
       <XC8-CO>
         <property key="coverage-enable" value=""/>
+        <property key="stack-guidance" value="false"/>
       </XC8-CO>
       <XC8-config-global>
         <property key="advanced-elf" value="true"/>

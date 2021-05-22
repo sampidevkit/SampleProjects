@@ -20,6 +20,7 @@
                 <sourceRootElem>library</sourceRootElem>
                 <sourceRootElem>mcc_generated_files</sourceRootElem>
                 <sourceRootElem>XCLibrary</sourceRootElem>
+                <sourceRootElem>../../Library</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

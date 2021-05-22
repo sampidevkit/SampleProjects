@@ -35,12 +35,16 @@ uint16_t ADC_GetValOnChannel(adc_channel_t channel)
         prvCh=channel;
         // Wait for the conversion to finish
         while(ADCON0bits.GO_nDONE);
+        __delay_us(50);
         // Conversion finished, return the result
         prvVal=((uint16_t) ((ADRESH<<8)+ADRESL));
         prvVal&=0b0000001111111111;
+        // Start the conversion
+        ADCON0bits.GO_nDONE=1;
     }
     else if(ADCON0bits.GO_nDONE==0)
     {
+        __delay_us(50);
         prvVal=((uint16_t) ((ADRESH<<8)+ADRESL));
         prvVal&=0b0000001111111111;
         // Start new conversion
