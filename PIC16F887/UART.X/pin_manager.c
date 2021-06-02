@@ -1,0 +1,15 @@
+#include "pin_manager.h"
+
+void PIN_MANAGER_Initialize(void)
+{
+    TRISE=0b1111;
+    TRISA=0b11111111;
+    TRISB=0b11111111;
+    TRISC=0b10111111;
+    TRISD=0b00000000;
+    PORTD=0b00000000;
+    ANSELH=0b00000000;
+    ANSEL=0b00000000;
+    WPUB=0b00000000;
+    OPTION_REGbits.nRBPU=1;
+}
