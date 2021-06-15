@@ -69,15 +69,19 @@ private const uint8_t NegChannel[NUM_OF_LM35]={
 
 void LM35_Tasks(void)
 {
-    int32_t tmp=LM35_GetADC(PosChannel[i]);
-    int32_t tmp0=LM35_GetADC(NegChannel[i]);
+    int32_t tmp, tmp0=0;
+
+    tmp=LM35_GetADC(PosChannel[i]);
+
+    if(NegChannel[i]!=0xFF)
+        tmp0=LM35_GetADC(NegChannel[i]);
 
     tmp-=tmp0;
     tmp*=LM35_ADC_VREF;
     tmp/=LM35_ADC_RES;
 
     tmp0=tmp%10;
-    
+
     if(tmp0>=5)
         tmp+=5;
     else if(tmp0<=(-5))
