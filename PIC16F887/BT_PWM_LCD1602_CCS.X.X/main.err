@@ -1,0 +1,7 @@
+Compiling F:\Github\SAMPIDevKit\SampleProjects\PIC16F887\BT_PWM_LCD1602_CCS.X.X\main on 20-Jun-21 at 23:37
+>>> Warning 204 "F:\Github\SAMPIDevKit\SampleProjects\PIC16F887\BT_PWM_LCD1602_CCS.X.X\main.c" Line 135(1,1): Condition always FALSE
+>>> Warning 204 "F:\Github\SAMPIDevKit\SampleProjects\PIC16F887\BT_PWM_LCD1602_CCS.X.X\main.c" Line 136(1,1): Condition always FALSE
+>>> Warning 204 "F:\Github\SAMPIDevKit\SampleProjects\PIC16F887\BT_PWM_LCD1602_CCS.X.X\main.c" Line 137(1,1): Condition always FALSE
+      Memory usage:   ROM=21%      RAM=9% - 17%
+      0 Errors,  3 Warnings.
+Build Successful.

@@ -31,6 +31,8 @@ public const uint8_t Led7SegCode[]={
     0x86, // E
     0x8E, // F
     0x7F, // .
+    0xBF, // -
+    0xB7, // =
     0xFF, // Off all segments
     0x00 // On all segments
 };
@@ -67,6 +69,8 @@ public const uint8_t Led7SegCode[]={
     0x79, // E
     0x71, // F
     0x80, // .
+    0x40, // -
+    0X48, // =
     0x00, // Off all segments
     0xFF // On all segments
 };
@@ -75,23 +79,31 @@ public const uint8_t Led7SegCode[]={
 
 private uint8_t DigitIdx=0;
 private uint8_t Led7SegBuf[NUM_OF_7SEG_DIGIT];
-private uint8_t Led7SegBufBk1[NUM_OF_7SEG_DIGIT];
-private uint8_t Led7SegBufBk2[NUM_OF_7SEG_DIGIT];
+private uint8_t Led7SegBufMask1[NUM_OF_7SEG_DIGIT];
+private uint8_t Led7SegBufMask2[NUM_OF_7SEG_DIGIT];
 private uint8_t ToggleCount=0;
 private tick_timer_t TickLed7Seg={1, 0, 0};
 
 public void Led7Seg_Tasks(void) // <editor-fold defaultstate="collapsed" desc="7-segment Led tasks">
 {
+    static uint8_t skip=0;
+
     if(Tick_Timer_Is_Over_Ms(TickLed7Seg, LED_7SEG_ACT_TIME))
     {
-        Led7Seg_Digit_Disable(); // Off all digit
+        skip=0;
+        Led7Seg_Digit_Disable(); // Off all digits
+        Led7Seg_Segment_Disable(); // Off all segments
+    }
 
-#if(USE_LED_7SEG_CC) 
-        Led7Seg_Segment_SetState(Led7SegBuf[DigitIdx]&Led7SegBufBk1[DigitIdx]);
-#else
-        Led7Seg_Segment_SetState(Led7SegBuf[DigitIdx]|Led7SegBufBk1[DigitIdx]);
-#endif
-        Led7Seg_Digit_SetState(DigitIdx++);
+    if(skip<1)
+    {
+        skip++;
+        Tick_Timer_Reset(TickLed7Seg);
+    }
+    else if(skip==1)
+    {
+        skip++;
+        Tick_Timer_Reset(TickLed7Seg);
 
         if(DigitIdx>=NUM_OF_7SEG_DIGIT)
             DigitIdx=0;
@@ -102,18 +114,26 @@ public void Led7Seg_Tasks(void) // <editor-fold defaultstate="collapsed" desc="7
 
             for(i=0; i<NUM_OF_7SEG_DIGIT; i++)
             {
-                if(Led7SegBufBk1[i]!=Led7SegBufBk2[i])
+                if(Led7SegBufMask1[i]!=Led7SegBufMask2[i])
                 {
                     uint8_t tmp;
 
-                    tmp=Led7SegBufBk1[i];
-                    Led7SegBufBk1[i]=Led7SegBufBk2[i];
-                    Led7SegBufBk2[i]=tmp;
+                    tmp=Led7SegBufMask1[i];
+                    Led7SegBufMask1[i]=Led7SegBufMask2[i];
+                    Led7SegBufMask2[i]=tmp;
                 }
             }
 
             ToggleCount=0;
         }
+
+#if(USE_LED_7SEG_CC) 
+        Led7Seg_Segment_SetState(Led7SegBuf[DigitIdx]&Led7SegBufMask1[DigitIdx]);
+#else
+        Led7Seg_Segment_SetState(Led7SegBuf[DigitIdx]|Led7SegBufMask1[DigitIdx]);
+#endif
+
+        Led7Seg_Digit_SetState(DigitIdx++);
     }
 } // </editor-fold>
 
@@ -143,7 +163,7 @@ public void Led7Seg_DisplayInteger(uint32_t Value) // <editor-fold defaultstate=
         if(Led7SegBuf[i]==Led7SegCode[0])
         {
             if(i<(NUM_OF_7SEG_DIGIT-1))
-                Led7SegBuf[i]=Led7SegCode[17];
+                Led7SegBuf[i]=Led7SegCode[19];
         }
         else
             break;
@@ -156,6 +176,7 @@ public void Led7Seg_DisplayFloat(uint32_t Value, uint8_t DotIdx) // <editor-fold
         return;
 
     Led7Seg_DisplayInteger(Value);
+
 #if(USE_LED_7SEG_CC)
     Led7SegBuf[DotIdx]|=Led7SegCode[16];
 #else
@@ -167,12 +188,15 @@ public void Led7Seg_DisplayTime(uint8_t HH, uint8_t MM, uint8_t SS) // <editor-f
 {
     Led7SegBuf[0]=Led7SegCode[HH/10];
 
+#ifndef LED7SEG_FULL_DISPLAYTIME
     if(Led7SegBuf[0]==Led7SegCode[0])
-        Led7SegBuf[0]=Led7SegCode[17]; // Off
+        Led7SegBuf[0]=Led7SegCode[19]; // Off
+#endif
 
     Led7SegBuf[1]=Led7SegCode[HH%10];
     Led7SegBuf[2]=Led7SegCode[MM/10];
     Led7SegBuf[3]=Led7SegCode[MM%10];
+
 #if(NUM_OF_7SEG_DIGIT>=6)
     Led7SegBuf[4]=Led7SegCode[SS/10];
     Led7SegBuf[5]=Led7SegCode[SS%10];
@@ -181,23 +205,29 @@ public void Led7Seg_DisplayTime(uint8_t HH, uint8_t MM, uint8_t SS) // <editor-f
 
 public void Led7Seg_DigitToggleEnable(uint8_t DgIdx) // <editor-fold defaultstate="collapsed" desc="Digit toggle enable">
 {
-    Led7SegBufBk1[DgIdx]=Led7SegCode[17];
-    Led7SegBufBk2[DgIdx]=Led7SegCode[18];
+    Led7SegBufMask1[DgIdx]=Led7SegCode[19];
+    Led7SegBufMask2[DgIdx]=Led7SegCode[20];
 } // </editor-fold>
 
 public void Led7Seg_DigitToggleDisable(uint8_t DgIdx) // <editor-fold defaultstate="collapsed" desc="Digit toggle disable">
 {
-    Led7SegBufBk1[DgIdx]=Led7SegCode[18];
-    Led7SegBufBk2[DgIdx]=Led7SegCode[18];
+    Led7SegBufMask1[DgIdx]=Led7SegCode[20];
+    Led7SegBufMask2[DgIdx]=Led7SegCode[20];
 } // </editor-fold>
 
 public void Led7Seg_Init(void) // <editor-fold defaultstate="collapsed" desc="7-segment Led initialize">
 {
     Disable_Global_Interrupt();
-    memset((void *) Led7SegBuf, Led7SegCode[17], NUM_OF_7SEG_DIGIT);
-    memset((void *) Led7SegBufBk1, Led7SegCode[18], NUM_OF_7SEG_DIGIT);
-    memset((void *) Led7SegBufBk2, Led7SegCode[18], NUM_OF_7SEG_DIGIT);
+    memset((void *) Led7SegBuf, Led7SegCode[19], NUM_OF_7SEG_DIGIT);
+    memset((void *) Led7SegBufMask1, Led7SegCode[20], NUM_OF_7SEG_DIGIT);
+    memset((void *) Led7SegBufMask2, Led7SegCode[20], NUM_OF_7SEG_DIGIT);
     DigitIdx=0;
     ToggleCount=0;
     Enable_Global_Interrupt();
+} // </editor-fold>
+
+public void Led7Seg_DeInit(void) // <editor-fold defaultstate="collapsed" desc="7-segment Led deinitialize">
+{
+    Led7Seg_Digit_Disable();
+    Led7Seg_Segment_Disable();
 } // </editor-fold>

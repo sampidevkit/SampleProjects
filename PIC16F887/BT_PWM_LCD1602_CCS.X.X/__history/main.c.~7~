@@ -1,0 +1,224 @@
+#include <16F887.h>
+
+#device ADC=10
+#use delay(crystal=20MHz)
+
+// encoder resolution
+#define ENCODER_RES     2 // pulse/round
+// buttons
+#define BT_DIR          PIN_D3
+#define BT_UP           PIN_D2
+#define BT_DOWN         PIN_D1
+// lcd
+#define LCD_ENABLE_PIN  PIN_B7
+#define LCD_RS_PIN      PIN_B5
+#define LCD_RW_PIN      PIN_B6
+#define LCD_DATA4       PIN_E2
+#define LCD_DATA5       PIN_E1
+#define LCD_DATA6       PIN_E0
+#define LCD_DATA7       PIN_D4
+
+#include <lcd.c>
+#include <stdint.h>
+#include <stdbool.h>
+
+typedef enum
+{
+    TASK_INIT=0,
+    TASK_STOP,
+    TASK_FORWARD,
+    TASK_REVERSE
+} task_t;
+
+typedef struct
+{
+    bool State;
+    uint8_t Count;
+} bt_t;
+
+#define Button_Init(btCxt, Pin)  do{((bt_t)(btCxt)).State=1; ((bt_t)(btCxt)).Count=0;}while(0)
+
+volatile uint32_t PulseCount;
+
+#INT_TIMER2
+
+void TIMER2_isr(void) // <editor-fold defaultstate="collapsed" desc="Base-timer overflow">
+{
+    PulseCount=get_timer1();
+    PulseCount=set_timer1(0);
+} // </editor-fold>
+
+bool Button_Is_Pressed(bt_t *pCxt, int16_t Pin) // <editor-fold defaultstate="collapsed" desc="Check state of button">
+{
+    if(pCxt->State!=input(Pin))
+    {
+        if(pCxt->State==1)
+        {
+            if(++pCxt->Count>10) // check 10 operation cycles
+            {
+                pCxt->State=0;
+                return 1;
+            }
+        }
+        else
+            pCxt->State=1;
+    }
+    else if(pCxt->Count>0)
+        pCxt->Count=0;
+
+    return 0;
+} // </editor-fold>
+
+void Display_Dir(task_t dir) // <editor-fold defaultstate="collapsed" desc="Display direction">
+{
+    lcd_gotoxy(1, 1); // goto position x of line y
+
+    if(dir==TASK_FORWARD)
+        printf(lcd_putc, "Fwd, ");
+    else if(dir==TASK_REVERSE)
+        printf(lcd_putc, "Rev, ");
+    else
+        printf(lcd_putc, "Stop           ");
+} // </editor-fold>
+
+void Display_Duty(int32_t duty) // <editor-fold defaultstate="collapsed" desc="Display duty">
+{
+    duty*=100;
+    duty/=1023;
+
+    if(duty==0)
+        Display_Dir(TASK_STOP);
+    else
+    {
+        lcd_gotoxy(6, 1); // goto position x of line y
+        printf(lcd_putc, "%03ld", duty);
+    }
+} // </editor-fold>
+
+void Display_Speed(uint32_t count) // <editor-fold defaultstate="collapsed" desc="Display speed">
+{
+    static uint16_t lastSpeed=0;
+    uint32_t tmp=count;
+
+    tmp/=ENCODER_RES; // calc round per 13.1ms (tmr2 overflow)
+    tmp*=600000;
+    tmp/=131;
+
+    if(lastSpeed!=(uint16_t) tmp)
+    {
+        lastSpeed=(uint16_t) tmp;
+        lcd_gotoxy(1, 2); // goto position x of line y
+        printf(lcd_putc, "%04ld", lastSpeed);
+    }
+} // </editor-fold>
+
+void main(void)
+{
+    int16_t Duty;
+    task_t DoNext;
+    bt_t BtDir, BtUp, BtDown;
+
+    Duty=255;
+    DoNext=TASK_INIT;
+    set_tris_b(0b00011111);
+    set_tris_c(0b11111010);
+    set_tris_d(0b00001111);
+    set_tris_e(0b1000);
+    // Timer 1 (encoder)
+    setup_timer_1(T1_EXTERNAL|T1_DIV_BY_1|T1_CLK_OUT);
+    // Timer 2 (819 us overflow, 13.1 ms interrupt)
+    setup_timer_2(T2_DIV_BY_16, 255, 16);
+    // LCD
+    lcd_init();
+    // Buttons
+    Button_Init(BtDir);
+    Button_Init(BtUp);
+    Button_Init(BtDown);
+    enable_interrupts(GLOBAL);
+
+    while(TRUE)
+    {
+        switch(DoNext)
+        {
+            default:
+            case TASK_INIT:
+                set_pwm1_duty(0);
+                setup_ccp1(CCP_OFF);
+                /* LCD 1602 display map
+                  ----------------------------
+                 |[1, 1][1, 1][1, ...][16, 1]|
+                 |[1, 2][2, 2][2, ...][16, 2]|
+                  ---------------------------- */
+                Display_Duty(0);
+                Display_Speed(0);
+                disable_interrupts(INT_TIMER2);
+                DoNext=TASK_STOP;
+                delay_ms(100);
+                break;
+
+            case TASK_STOP:
+                if(Button_Is_Pressed(&BtDir, BT_DIR))
+                {
+                    DoNext=TASK_FORWARD;
+                    set_timer1(0);
+                    set_timer2(0);
+                    clear_interrupt(INT_TIMER2);
+                    enable_interrupts(INT_TIMER2);
+                    // PWM1
+                    setup_ccp1(CCP_PWM|CCP_PWM_FULL_BRIDGE);
+                    set_pwm1_duty(Duty);
+                    Display_Dir(TASK_FORWARD);
+                    Display_Duty(Duty);
+                    Display_Speed(0);
+                }
+                break;
+
+            case TASK_FORWARD:
+                if(Button_Is_Pressed(&BtDir, BT_DIR))
+                {
+                    DoNext=TASK_REVERSE;
+                    set_timer1(0);
+                    set_timer2(0);
+                    clear_interrupt(INT_TIMER2);
+                    enable_interrupts(INT_TIMER2);
+                    // PWM1
+                    setup_ccp1(CCP_PWM|CCP_PWM_FULL_BRIDGE_REV);
+                    set_pwm1_duty(Duty);
+                    Display_Dir(TASK_REVERSE);
+                    Display_Duty(Duty);
+                    Display_Speed(0);
+                }
+                break;
+
+            case TASK_REVERSE:
+                if(Button_Is_Pressed(&BtDir, BT_DIR))
+                    DoNext=TASK_INIT;
+                break;
+        }
+
+        if((DoNext==TASK_FORWARD)||(DoNext==TASK_REVERSE))
+        {
+
+            Display_Speed(PulseCount);
+
+            if(Button_Is_Pressed(&BtUp, BT_UP))
+            {
+                if(Duty<1023)
+                {
+                    Duty+=7;
+                    Display_Duty(Duty);
+                }
+            }
+            else if(Button_Is_Pressed(&BtDown, BT_DOWN))
+            {
+                if(Duty>0)
+                {
+                    Duty-=7;
+                    Display_Duty(Duty);
+                }
+                else
+                    DoNext=TASK_INIT;
+            }
+        }
+    }
+}
