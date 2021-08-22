@@ -1,0 +1,3 @@
+[submodule "PIC24FJ256GB106/AutoMouse.X/m-stack"]
+	path = PIC24FJ256GB106/AutoMouse.X/m-stack
+	url = https://github.com/signal11/m-stack.git

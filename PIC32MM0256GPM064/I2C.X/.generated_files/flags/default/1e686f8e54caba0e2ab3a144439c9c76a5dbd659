@@ -1,0 +1,1 @@
+ $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common   -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  F:\Git\SAMPIDevKit\SampleProjects\PIC32MM0256GPM064\I2C.X\mcc_generated_files\i2c1_driver.c
