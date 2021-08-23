@@ -4,8 +4,9 @@
 #use FIXED_IO(D_outputs=PIN_D3, PIN_D2, PIN_D1, PIN_D0)
 #use FIXED_IO(B_outputs=PIN_B7, PIN_B6, PIN_B5, PIN_B4, PIN_B3, PIN_B2, PIN_B1, PIN_B0)
 
-#define BT_UP                       PIN_D6
-#define BT_DOWN                     PIN_D7
+#define BT_UP                       PIN_D5
+#define BT_DOWN                     PIN_D6
+#define BT_TOGGLE                   PIN_D7
 #define BUTTON_DELAY_CYCLES         10
 
 #include "../../Library/Buttons_CCS.c"
@@ -31,11 +32,13 @@ void TMR1_Isr(void)
 
 void main(void)
 {
+    int8 toggle_idx=0;
     signed int16 Count=9995;
-    bt_t BtUp, BtDown;
+    bt_t BtUp, BtDown, BtToggle;
 
     Button_Init(BtUp);
     Button_Init(BtDown);
+    Button_Init(BtToggle);
     Led7Seg_Init();
     Led7Seg_DisplayInteger(Count);
     setup_timer_1(T1_INTERNAL|T1_DIV_BY_1);
@@ -49,7 +52,7 @@ void main(void)
     Led7Seg_SetDigitValue(3, 0b11000110); // C
     delay_ms(1000);
     Led7Seg_DisplayInteger(Count);
-    
+
     while(TRUE)
     {
         if(Button_Is_Pressed(&BtUp, BT_UP))
@@ -66,6 +69,39 @@ void main(void)
                 Count=9999;
 
             Led7Seg_DisplayInteger(Count);
+        }
+
+        if(Button_Is_Pressed(&BtToggle, BT_TOGGLE))
+        {
+            if(++toggle_idx>4)
+                toggle_idx=0;
+
+            switch(toggle_idx)
+            {
+                default:
+                case 0:
+                    Led7Seg_DigitToggleDisable(3);
+                    break;
+
+                case 1:
+                    Led7Seg_DigitToggleEnable(0);
+                    break;
+
+                case 2:
+                    Led7Seg_DigitToggleDisable(0);
+                    Led7Seg_DigitToggleEnable(1);
+                    break;
+
+                case 3:
+                    Led7Seg_DigitToggleDisable(1);
+                    Led7Seg_DigitToggleEnable(2);
+                    break;
+
+                case 4:
+                    Led7Seg_DigitToggleDisable(2);
+                    Led7Seg_DigitToggleEnable(3);
+                    break;
+            }
         }
     }
 }
