@@ -12,6 +12,9 @@
 #define BLD_Nvm_ErasePage(addr)                 FLASH_ErasePage(addr)
 #define BLD_Nvm_WriteDoubleWord(addr, Lsb, Msb) FLASH_WriteDoubleWord(addr, Lsb, Msb)
 
+#define BLD_Nvm_SystemReboot()					BootLoader_Deinitialize() // UART Bootloader
+//#define BLD_Nvm_SystemReboot()					do{Flash_WriteByte(0x00, 0x00); BootLoader_Deinitialize();}while(0) // SPI Flash Bootloader
+
 #if defined(BLD_NVM_TARGET_DEVICE_PIC32MM0256GPM0XX) // tested
 
 #if defined(__32MM0256GPM028_H)
