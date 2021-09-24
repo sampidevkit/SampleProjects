@@ -17,7 +17,7 @@
 #define BLD_Write(b)            UART2_Write(b)
 
 /* *************************************************************** SPI FLASH */
-//#define BLD_Trigger_GetState()  (Flash_ReadByte(0x00)==0xFF)
+//#define BLD_Trigger_GetState()  (Flash_ReadByte(0x00)==0x00)
 //#define BLD_Trigger_Init()      Flash_Init()
 //#define BLD_Comm_Init()         SPI_Init()
 //#define BLD_IsRxReady()         1
