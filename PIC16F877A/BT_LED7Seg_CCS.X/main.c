@@ -9,7 +9,7 @@
 #define BT_TOGGLE                   PIN_D7
 #define BUTTON_DELAY_CYCLES         10
 
-#include "../../Library/Buttons_CCS.c"
+#include "..\..\Library\Buttons_CCS.c"
 
 #define NUM_OF_7SEG_DIGIT           4
 #define USE_LED_7SEG_CA             1 // Common anode
@@ -20,7 +20,7 @@
 #define Led7Seg_Segment_SetState(x) output_b(x)
 #define Led7Seg_Digit_SetState(x)   output_d(~(1<<x))
 
-#include "../../Library/Led7Seg_CCS.c"
+#include "..\..\Library\Led7Seg_CCS.c"
 
 #INT_TIMER1
 

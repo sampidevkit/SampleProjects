@@ -3,6 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
+            <name>BT_CCS</name>
             <name>BT_LED7Seg_CCS</name>
             <creation-uuid>74ae0c4e-3726-4d3b-819c-2432b9fb34ca</creation-uuid>
             <make-project-type>0</make-project-type>

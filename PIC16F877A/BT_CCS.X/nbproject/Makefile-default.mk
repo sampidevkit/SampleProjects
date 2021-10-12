@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=cof
 DEBUGGABLE_SUFFIX=cof
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=cof
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
@@ -88,12 +88,12 @@ FIXDEPS=fixDeps
 _/_=\\
 ShExtension=.bat
 Device=PIC16F877A
-ProjectDir="F:\Git\SAMPI\Ex_MCU8\PIC16F877A\BT_LED7Seg_CCS.X"
-ProjectName=BT_LED7Seg_CCS
+ProjectDir="F:\Git\SAMPI\Ex_MCU8\PIC16F877A\BT_CCS.X"
+ProjectName=BT_CCS
 ConfName=default
-ImagePath="dist\default\${IMAGE_TYPE}\BT_LED7Seg_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
+ImagePath="dist\default\${IMAGE_TYPE}\BT_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
 ImageDir="dist\default\${IMAGE_TYPE}"
-ImageName="BT_LED7Seg_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
+ImageName="BT_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IsDebug="true"
 else
@@ -104,7 +104,7 @@ endif
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 	@echo "--------------------------------------"
 	@echo "User defined post-build step: [copy ${ImagePath} ".\lastbuild.${OUTPUT_SUFFIX}"]"
 	@copy ${ImagePath} ".\lastbuild.${OUTPUT_SUFFIX}"
@@ -123,8 +123,8 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 ifeq (1,1) 
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 	${MP_CC}  out="${OBJECTDIR}"  main.c +FM +DF +CC +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P #__16F877A=1 
-	@mv ${OBJECTDIR}/main.cof "dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.cof" 
-	@mv ${OBJECTDIR}/main.hex "dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.hex"
+	@mv ${OBJECTDIR}/main.cof "dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.cof" 
+	@mv ${OBJECTDIR}/main.hex "dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.hex"
 else 
 	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FM +DF +CC +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P #__16F877A=1 +EXPORTD="${OBJECTDIR}"  
 	
@@ -136,8 +136,8 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 ifeq (1,1) 
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 	${MP_CC}  out="${OBJECTDIR}"  main.c +FM +DF +CC +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P #__16F877A=1 
-	@mv ${OBJECTDIR}/main.cof "dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.cof" 
-	@mv ${OBJECTDIR}/main.hex "dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.hex"
+	@mv ${OBJECTDIR}/main.cof "dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.cof" 
+	@mv ${OBJECTDIR}/main.hex "dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.hex"
 else 
 	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FM +DF +CC +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P #__16F877A=1 +EXPORTD="${OBJECTDIR}"  
 	
@@ -148,27 +148,27 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 ifeq (1,1) 
 	
 else 
-	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FM +DF +CC LINK=BT_LED7Seg_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P
+	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FM +DF +CC LINK=BT_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P
 	
 endif 
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
 ifeq (1,1) 
 	
 else 
-	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FM +DF +CC LINK=BT_LED7Seg_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P
+	${MP_LD}   out="dist/${CND_CONF}/${IMAGE_TYPE}"  +FM +DF +CC LINK=BT_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA I+="C:\Program Files (x86)\PICC\Devices" I+="C:\Program Files (x86)\PICC\Drivers" +DF +LN +T +A +M +J +Z -P
 	
 endif 
 	
 	@echo Normalizing hex file
-	@"C:/Program Files/Microchip/MPLABX/v5.50/mplab_platform/platform/../mplab_ide/modules/../../bin/hexmate" --edf="C:/Program Files/Microchip/MPLABX/v5.50/mplab_platform/platform/../mplab_ide/modules/../../dat/en_msgs.txt" dist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.hex -odist/${CND_CONF}/${IMAGE_TYPE}/BT_LED7Seg_CCS.X.${IMAGE_TYPE}.hex
+	@"C:/Program Files/Microchip/MPLABX/v5.50/mplab_platform/platform/../mplab_ide/modules/../../bin/hexmate" --edf="C:/Program Files/Microchip/MPLABX/v5.50/mplab_platform/platform/../mplab_ide/modules/../../dat/en_msgs.txt" dist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.hex -odist/${CND_CONF}/${IMAGE_TYPE}/BT_CCS.X.${IMAGE_TYPE}.hex
 
 endif
 
