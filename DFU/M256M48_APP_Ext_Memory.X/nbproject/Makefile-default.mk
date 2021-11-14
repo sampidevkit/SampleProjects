@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../Lib/Memory/SST25.c mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/clock.c mcc_generated_files/system.c mcc_generated_files/mcc.c mcc_generated_files/exceptions.c mcc_generated_files/spi2.c main.c ../Lib/Bootloader/BLD_Ext_Memory.c mcc_generated_files/uart2.c
+SOURCEFILES_QUOTED_IF_SPACED=../Lib/Bootloader/BLD_Ext_Memory.c ../Lib/Memory/SST25.c mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/clock.c mcc_generated_files/system.c mcc_generated_files/mcc.c mcc_generated_files/exceptions.c mcc_generated_files/spi2.c mcc_generated_files/uart2.c main.c ../Lib/System/TickTimer.c mcc_generated_files/uart3.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/319649862/SST25.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ${OBJECTDIR}/mcc_generated_files/uart2.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/319649862/SST25.o.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/exceptions.o.d ${OBJECTDIR}/mcc_generated_files/spi2.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d ${OBJECTDIR}/mcc_generated_files/uart2.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ${OBJECTDIR}/_ext/319649862/SST25.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/mcc_generated_files/uart2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/129221400/TickTimer.o ${OBJECTDIR}/mcc_generated_files/uart3.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d ${OBJECTDIR}/_ext/319649862/SST25.o.d ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/clock.o.d ${OBJECTDIR}/mcc_generated_files/system.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/exceptions.o.d ${OBJECTDIR}/mcc_generated_files/spi2.o.d ${OBJECTDIR}/mcc_generated_files/uart2.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/_ext/129221400/TickTimer.o.d ${OBJECTDIR}/mcc_generated_files/uart3.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/319649862/SST25.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ${OBJECTDIR}/mcc_generated_files/uart2.o
+OBJECTFILES=${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ${OBJECTDIR}/_ext/319649862/SST25.o ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/clock.o ${OBJECTDIR}/mcc_generated_files/system.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/exceptions.o ${OBJECTDIR}/mcc_generated_files/spi2.o ${OBJECTDIR}/mcc_generated_files/uart2.o ${OBJECTDIR}/main.o ${OBJECTDIR}/_ext/129221400/TickTimer.o ${OBJECTDIR}/mcc_generated_files/uart3.o
 
 # Source Files
-SOURCEFILES=../Lib/Memory/SST25.c mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/clock.c mcc_generated_files/system.c mcc_generated_files/mcc.c mcc_generated_files/exceptions.c mcc_generated_files/spi2.c main.c ../Lib/Bootloader/BLD_Ext_Memory.c mcc_generated_files/uart2.c
+SOURCEFILES=../Lib/Bootloader/BLD_Ext_Memory.c ../Lib/Memory/SST25.c mcc_generated_files/interrupt_manager.c mcc_generated_files/pin_manager.c mcc_generated_files/clock.c mcc_generated_files/system.c mcc_generated_files/mcc.c mcc_generated_files/exceptions.c mcc_generated_files/spi2.c mcc_generated_files/uart2.c main.c ../Lib/System/TickTimer.c mcc_generated_files/uart3.c
 
 
 
@@ -127,6 +127,12 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o: ../Lib/Bootloader/BLD_Ext_Memory.c  .generated_files/flags/default/7d7634bd0433fd63dad4caa7e97fa20f55790818 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+	@${MKDIR} "${OBJECTDIR}/_ext/1245858882" 
+	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d" -o ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ../Lib/Bootloader/BLD_Ext_Memory.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 ${OBJECTDIR}/_ext/319649862/SST25.o: ../Lib/Memory/SST25.c  .generated_files/flags/default/b43e73eed439311950399365afab5111bbc7b21a .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
 	@${MKDIR} "${OBJECTDIR}/_ext/319649862" 
 	@${RM} ${OBJECTDIR}/_ext/319649862/SST25.o.d 
@@ -175,25 +181,37 @@ ${OBJECTDIR}/mcc_generated_files/spi2.o: mcc_generated_files/spi2.c  .generated_
 	@${RM} ${OBJECTDIR}/mcc_generated_files/spi2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/spi2.o.d" -o ${OBJECTDIR}/mcc_generated_files/spi2.o mcc_generated_files/spi2.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/a4b3332ad457137cc55d49de1e174c4fc9b9b561 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/main.o.d 
-	@${RM} ${OBJECTDIR}/main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o: ../Lib/Bootloader/BLD_Ext_Memory.c  .generated_files/flags/default/7d7634bd0433fd63dad4caa7e97fa20f55790818 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
-	@${MKDIR} "${OBJECTDIR}/_ext/1245858882" 
-	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d" -o ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ../Lib/Bootloader/BLD_Ext_Memory.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
 ${OBJECTDIR}/mcc_generated_files/uart2.o: mcc_generated_files/uart2.c  .generated_files/flags/default/183ab07e9fc37af8e8f7b433e417cb941b4f84c2 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/uart2.o.d 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/uart2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart2.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart2.o mcc_generated_files/uart2.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/a4b3332ad457137cc55d49de1e174c4fc9b9b561 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/main.o.d 
+	@${RM} ${OBJECTDIR}/main.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/_ext/129221400/TickTimer.o: ../Lib/System/TickTimer.c  .generated_files/flags/default/39967cbdbd92c633c6ba655bc87f9da768ae9a48 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+	@${MKDIR} "${OBJECTDIR}/_ext/129221400" 
+	@${RM} ${OBJECTDIR}/_ext/129221400/TickTimer.o.d 
+	@${RM} ${OBJECTDIR}/_ext/129221400/TickTimer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/129221400/TickTimer.o.d" -o ${OBJECTDIR}/_ext/129221400/TickTimer.o ../Lib/System/TickTimer.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/mcc_generated_files/uart3.o: mcc_generated_files/uart3.c  .generated_files/flags/default/1735b6a0920d98fbd63a7acc69e320b1ebc0b369 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart3.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart3.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart3.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart3.o mcc_generated_files/uart3.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
+${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o: ../Lib/Bootloader/BLD_Ext_Memory.c  .generated_files/flags/default/1f1094695aad213f0497bb58d8672350b6da6d56 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+	@${MKDIR} "${OBJECTDIR}/_ext/1245858882" 
+	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d" -o ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ../Lib/Bootloader/BLD_Ext_Memory.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 ${OBJECTDIR}/_ext/319649862/SST25.o: ../Lib/Memory/SST25.c  .generated_files/flags/default/36801f78f83f21f7af49539fdc20489ed683cd34 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
 	@${MKDIR} "${OBJECTDIR}/_ext/319649862" 
 	@${RM} ${OBJECTDIR}/_ext/319649862/SST25.o.d 
@@ -242,23 +260,29 @@ ${OBJECTDIR}/mcc_generated_files/spi2.o: mcc_generated_files/spi2.c  .generated_
 	@${RM} ${OBJECTDIR}/mcc_generated_files/spi2.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/spi2.o.d" -o ${OBJECTDIR}/mcc_generated_files/spi2.o mcc_generated_files/spi2.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/mcc_generated_files/uart2.o: mcc_generated_files/uart2.c  .generated_files/flags/default/2dba50dc731c7c83a7822c9ef4c17f9c534c042d .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart2.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart2.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart2.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart2.o mcc_generated_files/uart2.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/f22bb4c674c2dcbc715b653722aca47c2ab432b5 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o: ../Lib/Bootloader/BLD_Ext_Memory.c  .generated_files/flags/default/1f1094695aad213f0497bb58d8672350b6da6d56 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
-	@${MKDIR} "${OBJECTDIR}/_ext/1245858882" 
-	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d 
-	@${RM} ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o.d" -o ${OBJECTDIR}/_ext/1245858882/BLD_Ext_Memory.o ../Lib/Bootloader/BLD_Ext_Memory.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+${OBJECTDIR}/_ext/129221400/TickTimer.o: ../Lib/System/TickTimer.c  .generated_files/flags/default/fea4cb431c0742efbc13592989aa968f93137001 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+	@${MKDIR} "${OBJECTDIR}/_ext/129221400" 
+	@${RM} ${OBJECTDIR}/_ext/129221400/TickTimer.o.d 
+	@${RM} ${OBJECTDIR}/_ext/129221400/TickTimer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/_ext/129221400/TickTimer.o.d" -o ${OBJECTDIR}/_ext/129221400/TickTimer.o ../Lib/System/TickTimer.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/mcc_generated_files/uart2.o: mcc_generated_files/uart2.c  .generated_files/flags/default/2dba50dc731c7c83a7822c9ef4c17f9c534c042d .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
+${OBJECTDIR}/mcc_generated_files/uart3.o: mcc_generated_files/uart3.c  .generated_files/flags/default/b11bff1667e11cf23f886d69e981bfe7aa0d5058 .generated_files/flags/default/5ef9415e1d36cc844a9a54db0dd68d3a003c2aef
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
-	@${RM} ${OBJECTDIR}/mcc_generated_files/uart2.o.d 
-	@${RM} ${OBJECTDIR}/mcc_generated_files/uart2.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart2.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart2.o mcc_generated_files/uart2.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart3.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart3.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"usr" -I"cfg" -I"mcc_generated_files" -I"../Lib" -ffunction-sections -fdata-sections -O2 -fno-common -MP -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart3.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart3.o mcc_generated_files/uart3.c    -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

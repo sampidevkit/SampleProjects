@@ -7,19 +7,20 @@
 #include <stdbool.h>
 /* ************************************************************** MCC Library */
 #include "spi2.h"
-#include "uart2.h"
-#include "uart3.h"
 #include "clock.h"
 #include "system.h"
 #include "watchdog.h"
 #include "exceptions.h"
 #include "pin_manager.h"
+#include "memory/flash.h"
 #include "interrupt_manager.h"
 /* ************************************************************ SAMPI Library */
+#include "Bootloader/Bootloader.h"
+#include "Bootloader/BLD_Nvm_PIC32.h"
+#include "Bootloader/HexParsing.h"
 #include "Bootloader/BLD_Ext_Memory.h"
 #include "Common/LibDef.h"
 #include "Memory/SST25.h"
-#include "System/TickTimer.h"
 /* ************************************************************** Application */
 // Clock sources
 #define SYS_CLK                         24000000UL
@@ -35,7 +36,5 @@
 #define Disable_Coretimer_Interrupt()   (IEC0CLR=_IEC0_CTIE_MASK)
 #define Enable_Coretimer_Interrupt()    (IEC0SET=_IEC0_CTIE_MASK)
 #define Clear_Coretimer_Interrupt()     (IFS0CLR=_IFS0_CTIF_MASK)
-// Watching Dog Timer
-#define ClrWdt()                        WATCHDOG_TimerClear()
 
 #endif

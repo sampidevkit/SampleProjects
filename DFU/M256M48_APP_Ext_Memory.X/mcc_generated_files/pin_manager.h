@@ -966,6 +966,188 @@ inline static void SCK2OUT_SetValue(bool value)
 #define SCK2OUT_SetDigitalOutput()   ( TRISBCLR = (1 << 7) )
 /**
   @Summary
+    Sets the GPIO pin, RC12, high using LATC12.
+
+  @Description
+    Sets the GPIO pin, RC12, high using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC12 high (1)
+    CELL_PWR_ON_SetHigh();
+    </code>
+
+*/
+#define CELL_PWR_ON_SetHigh()          ( LATCSET = (1 << 12) )
+/**
+  @Summary
+    Sets the GPIO pin, RC12, low using LATC12.
+
+  @Description
+    Sets the GPIO pin, RC12, low using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Set RC12 low (0)
+    CELL_PWR_ON_SetLow();
+    </code>
+
+*/
+#define CELL_PWR_ON_SetLow()           ( LATCCLR = (1 << 12) )
+
+/**
+  @Summary
+    Sets a value to the GPIO pin.
+
+  @Description
+    Sets or Resets the GPIO pin, RC12, low or high using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    bool value; : value to be set to the GPIO pin.
+
+  @Example
+    <code>
+    // Set RC12 to low.
+    CELL_PWR_ON_SetValue(false);
+    </code>
+
+*/
+inline static void CELL_PWR_ON_SetValue(bool value)
+{
+  if(value)
+  {
+    CELL_PWR_ON_SetHigh();
+  }
+  else
+  {
+    CELL_PWR_ON_SetLow();
+  }
+}
+
+/**
+  @Summary
+    Toggles the GPIO pin, RC12, using LATC12.
+
+  @Description
+    Toggles the GPIO pin, RC12, using LATC12.
+
+  @Preconditions
+    The RC12 must be set to an output.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Toggle RC12
+    CELL_PWR_ON_Toggle();
+    </code>
+
+*/
+#define CELL_PWR_ON_Toggle()           ( LATCINV = (1 << 12) )
+/**
+  @Summary
+    Reads the value of the GPIO pin, RC12.
+
+  @Description
+    Reads the value of the GPIO pin, RC12.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    uint16_t portValue;
+
+    // Read RC12
+    postValue = CELL_PWR_ON_GetValue();
+    </code>
+
+*/
+#define CELL_PWR_ON_GetValue()         PORTCbits.RC12
+/**
+  @Summary
+    Configures the GPIO pin, RC12, as an input.
+
+  @Description
+    Configures the GPIO pin, RC12, as an input.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC12 as an input
+    CELL_PWR_ON_SetDigitalInput();
+    </code>
+
+*/
+#define CELL_PWR_ON_SetDigitalInput()   ( TRISCSET = (1 << 12) )
+/**
+  @Summary
+    Configures the GPIO pin, RC12, as an output.
+
+  @Description
+    Configures the GPIO pin, RC12, as an output.
+
+  @Preconditions
+    None.
+
+  @Returns
+    None.
+
+  @Param
+    None.
+
+  @Example
+    <code>
+    // Sets the RC12 as an output
+    CELL_PWR_ON_SetDigitalOutput();
+    </code>
+
+*/
+#define CELL_PWR_ON_SetDigitalOutput()   ( TRISCCLR = (1 << 12) )
+/**
+  @Summary
     Sets the GPIO pin, RD0, high using LATD0.
 
   @Description

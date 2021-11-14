@@ -4,10 +4,6 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/F:/Git/SAMPI/Ex_MCU32/DFU/M256M48_APP_Ext_Memory.X/main.c</file>
-            <file>file:/F:/Git/SAMPI/Ex_MCU32/DFU/M256M48_APP_Ext_Memory.X/usr/libcomp.h</file>
-            <file>file:/F:/Git/SAMPI/Ex_MCU32/DFU/Lib/Bootloader/BLD_Ext_Memory.c</file>
-            <file>file:/F:/Git/SAMPI/Ex_MCU32/DFU/M256M48_APP_Ext_Memory.X/cfg/BLD_Ext_Memory_Cfg.h</file>
-            <file>file:/F:/Git/SAMPI/Ex_MCU32/DFU/Lib/Memory/SST25.c</file>
         </group>
     </open-files>
 </project-private>

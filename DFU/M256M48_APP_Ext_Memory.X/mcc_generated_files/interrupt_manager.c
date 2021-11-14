@@ -58,16 +58,31 @@ void INTERRUPT_Initialize (void)
     //    UERI: UART 2 Error
     //    Priority: 1
         IPC14bits.U2EIP = 1;
-    //    Sub Priority: 0
-        IPC14bits.U2EIS = 0;
+    //    Sub Priority: 2
+        IPC14bits.U2EIS = 2;
     //    UTXI: UART 2 Transmission
     //    Priority: 1
         IPC14bits.U2TXIP = 1;
-    //    Sub Priority: 0
-        IPC14bits.U2TXIS = 0;
+    //    Sub Priority: 1
+        IPC14bits.U2TXIS = 1;
     //    URXI: UART 2 Reception
     //    Priority: 1
         IPC14bits.U2RXIP = 1;
     //    Sub Priority: 0
         IPC14bits.U2RXIS = 0;
+    //    UERI: UART 3 Error
+    //    Priority: 2
+        IPC15bits.U3EIP = 2;
+    //    Sub Priority: 2
+        IPC15bits.U3EIS = 2;
+    //    UTXI: UART 3 Transmission
+    //    Priority: 2
+        IPC15bits.U3TXIP = 2;
+    //    Sub Priority: 1
+        IPC15bits.U3TXIS = 1;
+    //    URXI: UART 3 Reception
+    //    Priority: 2
+        IPC14bits.U3RXIP = 2;
+    //    Sub Priority: 0
+        IPC14bits.U3RXIS = 0;
 }
