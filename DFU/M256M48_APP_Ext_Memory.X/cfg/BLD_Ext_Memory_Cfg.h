@@ -11,7 +11,8 @@
 #define BLD_EXT_MEM_TRIG_ADDR                   0
 
 #define BLD_Ext_Memory_Driver_Init()            SST25_Init()
-#define BLD_Ext_Memory_Erase()                  SST25_Chip_Erase()
+#define BLD_Ext_Memory_Full_Erase()             SST25_Chip_Erase()
+#define BLD_Ext_Memory_Block_Erase(addr)        SST25_Sector_Erase(addr)
 #define BLD_Ext_Memory_ReadByte(addr)           SST25_ReadByte(addr)
 #define BLD_Ext_Memory_WriteByte(addr, data)    SST25_WriteByte(addr, data)
 

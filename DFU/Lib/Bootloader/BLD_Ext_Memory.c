@@ -20,9 +20,12 @@ public bool BLD_Ext_Memory_GetTriggerState(void)
 public void BLD_Ext_Memory_WriteTriggerState(bool State)
 {
     if(State==BLD_FW_NEW_UPDATE)
-        BLD_Ext_Memory_Erase();
+        BLD_Ext_Memory_Full_Erase();
     else
+    {
+        BLD_Ext_Memory_Block_Erase(BLD_EXT_MEM_TRIG_ADDR);
         BLD_Ext_Memory_WriteByte(BLD_EXT_MEM_TRIG_ADDR, 0x00);
+    }
 }
 
 public uint8_t BLD_Ext_Memory_ReadHex(void)
@@ -54,7 +57,7 @@ private bool Is_last_line(uint8_t c)
 public void BLD_Ext_Memory_Download_Tasks(void) // <editor-fold defaultstate="collapsed" desc="Download task">
 {
     static bool new_download=1;
-    
+
     while(BLD_Downloader_IsRxReady())
     {
         uint8_t c=BLD_Downloader_Read();
@@ -70,11 +73,11 @@ public void BLD_Ext_Memory_Download_Tasks(void) // <editor-fold defaultstate="co
             if(new_download==1)
             {
                 new_download=0;
-                BLD_Ext_Memory_Erase();
+                BLD_Ext_Memory_Full_Erase();
             }
-            
+
             BLD_Ext_Memory_WriteByte(HexDataAddr++, c);
-            
+
             if(Is_last_line(c))
             {
                 BLD_Ext_Memory_WriteByte(BLD_EXT_MEM_TRIG_ADDR, 0b10101010); // new FW trigger code
