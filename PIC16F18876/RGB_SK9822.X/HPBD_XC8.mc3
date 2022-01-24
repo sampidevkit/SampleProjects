@@ -1,4 +1,5 @@
-<config configName="default" projectName="HPBD_XC8" configVersion="1.1" device="PIC16F18876" deviceLibraryClass="com.microchip.mcc.mcu8.Mcu8PeripheralLibrary" coreVersion="5.1.0">
+<config configName="default" projectName="HPBD_XC8" configVersion="1.1" device="PIC16F18876" deviceLibraryClass="com.microchip.mcc.mcu8.Mcu8PeripheralLibrary" coreVersion="5.3.3">
+   <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
          <string>CLC1</string>
@@ -11006,74 +11007,74 @@
          <value>WDT window violation reset has not occurred</value>
       </entry>
    </tokenMap>
-   <generatedFileHashHistoryMap class="java.util.HashMap">
-      <entry>
-         <file>mcc_generated_files\mcc.h</file>
-         <hash>92a2ef8e191da38d889f0e35c030acda7bfde94719bd538f799d9d40712cce59</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\device_config.h</file>
-         <hash>4c2d8cef739c2b31f5e1b89376f233e6cd03d1d4af4bb0d60fcd536b5487eeeb</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\tmr0.h</file>
-         <hash>e2f1d520222232c94e0ca98c5e9fffe8c34ba3f199a4865c1c2512eddb04b3d4</hash>
-      </entry>
+   <generatedFileHashHistoryMap class="java.util.TreeMap">
       <entry>
          <file>main.c</file>
          <hash>2932e8b72720088b295e09176ccafab5561c42d7cf88ec78b4136fb53647ac6a</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\device_config.c</file>
-         <hash>081400a440451eef1323fad6168888c963f7d3266240d2d4598101864f36ccc0</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\pin_manager.h</file>
-         <hash>ed373a01ee2006e5af3d7625d0d2498f394dc1da09da37d2bae46f7abd527759</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\spi2.h</file>
-         <hash>da617bc9d3db488dee833a4435d915b070f628802231b009dc47da2ba5a72d38</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\clkref.h</file>
-         <hash>15a0eac8489883eb70a1a20ac599f5023f634fd220f1edefd5e8dfc49923cd4e</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\spi2.c</file>
-         <hash>06bb3e1af06596252c020196ac29bbec4e924cc699175e76f4b427a7f908da62</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\tmr0.c</file>
-         <hash>401ce7ba14f4a88b7c8d30081c23cefe621ad003ca0266e342b6c42c00ff94cb</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\pin_manager.c</file>
-         <hash>61c7ef28a81edeb093ef4401172beea32777036afb430ea8d6d743f7b87af07f</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\clc2.c</file>
-         <hash>e2bd0d337efd3bb780ac1bbaa162a7b9329249228603a165cd6a9969d7ec8407</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\clkref.c</file>
-         <hash>b66fec6cd565629b0e7714188c6fe531839e8778032a336ef7af149dbf8029ab</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clc1.c</file>
          <hash>c7f64d88d56579673e11fdf62cdf8ad84fc6073c1fa03e036b48b44a3fbbb261</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\mcc.c</file>
-         <hash>44a50401145fa54035527c9cad864f7192a5593ea5deb8909dfac1ed6805dcbc</hash>
+         <file>mcc_generated_files\clc1.h</file>
+         <hash>24ff330568ff434ee0054ec517355aa03433885427e40eb14d78c023e1b677f7</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\clc2.c</file>
+         <hash>e2bd0d337efd3bb780ac1bbaa162a7b9329249228603a165cd6a9969d7ec8407</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\clc2.h</file>
          <hash>aef0ffe28034bbd1efdafac4a0d90a8ca8b8de3499eb8502c76d351f3e74fb7b</hash>
       </entry>
       <entry>
-         <file>mcc_generated_files\clc1.h</file>
-         <hash>24ff330568ff434ee0054ec517355aa03433885427e40eb14d78c023e1b677f7</hash>
+         <file>mcc_generated_files\clkref.c</file>
+         <hash>b66fec6cd565629b0e7714188c6fe531839e8778032a336ef7af149dbf8029ab</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\clkref.h</file>
+         <hash>15a0eac8489883eb70a1a20ac599f5023f634fd220f1edefd5e8dfc49923cd4e</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\device_config.c</file>
+         <hash>081400a440451eef1323fad6168888c963f7d3266240d2d4598101864f36ccc0</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\device_config.h</file>
+         <hash>4c2d8cef739c2b31f5e1b89376f233e6cd03d1d4af4bb0d60fcd536b5487eeeb</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\mcc.c</file>
+         <hash>44a50401145fa54035527c9cad864f7192a5593ea5deb8909dfac1ed6805dcbc</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\mcc.h</file>
+         <hash>92a2ef8e191da38d889f0e35c030acda7bfde94719bd538f799d9d40712cce59</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\pin_manager.c</file>
+         <hash>61c7ef28a81edeb093ef4401172beea32777036afb430ea8d6d743f7b87af07f</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\pin_manager.h</file>
+         <hash>ed373a01ee2006e5af3d7625d0d2498f394dc1da09da37d2bae46f7abd527759</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\spi2.c</file>
+         <hash>06bb3e1af06596252c020196ac29bbec4e924cc699175e76f4b427a7f908da62</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\spi2.h</file>
+         <hash>da617bc9d3db488dee833a4435d915b070f628802231b009dc47da2ba5a72d38</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\tmr0.c</file>
+         <hash>401ce7ba14f4a88b7c8d30081c23cefe621ad003ca0266e342b6c42c00ff94cb</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\tmr0.h</file>
+         <hash>e2f1d520222232c94e0ca98c5e9fffe8c34ba3f199a4865c1c2512eddb04b3d4</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>
