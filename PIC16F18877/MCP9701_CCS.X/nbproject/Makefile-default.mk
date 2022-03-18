@@ -88,7 +88,7 @@ FIXDEPS=fixDeps
 _/_=\\
 ShExtension=.bat
 Device=PIC16F18877
-ProjectDir="F:\Git\SAMPI\Ex_MCU8\PIC16F18877\MCP9701_CCS.X"
+ProjectDir="F:\Git\SAMPI\Examples\Ex_MCU8\PIC16F18877\MCP9701_CCS.X"
 ProjectName=MCP9701_CCS
 ConfName=default
 ImagePath="${DISTDIR}\MCP9701_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}"
@@ -110,8 +110,8 @@ endif
 	@copy ${ImagePath} ".\lastbuild.${OUTPUT_SUFFIX}"
 	@echo "--------------------------------------"
 
-MP_CC="C:\PROGRA~2\PICC\CCSCON.exe"
-MP_LD="C:\PROGRA~2\PICC\CCSCON.exe"
+MP_CC="C:\Program Files (x86)\PICC\CCSCON.exe"
+MP_LD="C:\Program Files (x86)\PICC\CCSCON.exe"
 sourceline.device=sourceline="\#device PIC16F18877"
 sourceline.xccompat=sourceline="\#device ANSI" sourceline="\#device PASS_STRINGS=IN_RAM" sourceline="\#device CONST=READ_ONLY" sourceline="\#case" sourceline="\#TYPE SIGNED" sourceline="\#type INT=16, LONG=32"
 sourceline.gcccompat=sourceline="\#device ANSI" sourceline="\#device PASS_STRINGS=IN_RAM" sourceline="\#device CONST=READ_ONLY" sourceline="\#case" sourceline="\#TYPE SIGNED"
@@ -122,11 +122,11 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	${MKDIR} ${OBJECTDIR} 
 ifeq (1,1) 
 	${MKDIR} ${DISTDIR} 
-	${MP_CC}  out="${OBJECTDIR}"  main.c +FM +DF +CC #__DEBUG=1 +ICD +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 
+	${MP_CC}  out="${OBJECTDIR}"  main.c +FM +EX +DF +CC #__DEBUG=1 +ICD +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 
 	@mv ${OBJECTDIR}/main.cof "${DISTDIR}/MCP9701_CCS.X.${IMAGE_TYPE}.cof" 
 	@mv ${OBJECTDIR}/main.hex "${DISTDIR}/MCP9701_CCS.X.${IMAGE_TYPE}.hex"
 else 
-	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FM +DF +CC #__DEBUG=1 +ICD +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 +EXPORTD="${OBJECTDIR}"  
+	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FM +EX +DF +CC #__DEBUG=1 +ICD +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 +EXPORTD="${OBJECTDIR}"  
 	
 endif 
 	
@@ -135,11 +135,11 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	${MKDIR} ${OBJECTDIR} 
 ifeq (1,1) 
 	${MKDIR} ${DISTDIR} 
-	${MP_CC}  out="${OBJECTDIR}"  main.c +FM +DF +CC +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 
+	${MP_CC}  out="${OBJECTDIR}"  main.c +FM +EX +DF +CC +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 
 	@mv ${OBJECTDIR}/main.cof "${DISTDIR}/MCP9701_CCS.X.${IMAGE_TYPE}.cof" 
 	@mv ${OBJECTDIR}/main.hex "${DISTDIR}/MCP9701_CCS.X.${IMAGE_TYPE}.hex"
 else 
-	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FM +DF +CC +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 +EXPORTD="${OBJECTDIR}"  
+	${MP_CC}  out=""${OBJECTDIR}"" main.c +EXPORT +FM +EX +DF +CC +Y=9 +EA +DF +LN +T +A +M +J +Z -P #__16F18877=1 +EXPORTD="${OBJECTDIR}"  
 	
 endif 
 	
@@ -153,7 +153,7 @@ ${DISTDIR}/MCP9701_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproje
 ifeq (1,1) 
 	
 else 
-	${MP_LD}   out="${DISTDIR}"  +FM +DF +CC LINK=MCP9701_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA +DF +LN +T +A +M +J +Z -P
+	${MP_LD}   out="${DISTDIR}"  +FM +EX +DF +CC LINK=MCP9701_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA +DF +LN +T +A +M +J +Z -P
 	
 endif 
 	
@@ -163,7 +163,7 @@ ${DISTDIR}/MCP9701_CCS.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproje
 ifeq (1,1) 
 	
 else 
-	${MP_LD}   out="${DISTDIR}"  +FM +DF +CC LINK=MCP9701_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA +DF +LN +T +A +M +J +Z -P
+	${MP_LD}   out="${DISTDIR}"  +FM +EX +DF +CC LINK=MCP9701_CCS.X.${IMAGE_TYPE}.hex=${OBJECTDIR}/main.o +Y=9 +EA +DF +LN +T +A +M +J +Z -P
 	
 endif 
 	

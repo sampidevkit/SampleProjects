@@ -1,4 +1,4 @@
-; Keymap file generated Tuesday, 15.06.2021 at 22:11:41.
+; Keymap file generated Saturday, 26.02.2022 at 15:43:06.
 "E&xit Application"                      (00000100:0000013B) = 00044073
 "&New Project"                           (00000100:00000200) = 0002204E
 "&Open Project"                          (00000100:00000202) = 0002204F
@@ -24,6 +24,7 @@
 "Search && Tag"                          (00000113:00000033) = 00000054
 "Goto Previous Sheet "                   (00000114:0000004A) = 00000121
 "Goto Next Sheet"                        (00000114:0000004B) = 00000122
+"Edit Graph..."                          (00000115:00000050) = 00022045
 "Add Traces..."                          (00000115:00000051) = 00022054
 "Simulate Graph"                         (00000115:00000053) = 00000020
 "Schematic Capture Help"                 (0000011B:00000070) = 00000070
@@ -31,10 +32,10 @@
 "Block Delete"                           (0000011C:00000107) = 0000012E
 "Rotate Anti-Clockwise"                  (0000011C:00000114) = 0000006B
 "Rotate Clockwise"                       (0000011C:00000115) = 0000006D
-"X-Mirror"                               (0000011C:00000116) = 0002204D
+"X-Mirror"                               (0000011C:00000116) = 00000058
+"Y-Mirror"                               (0000011C:00000117) = 00000059
 "Redraw Display"                         (00000112:00000140) = 00000052
 "Toggle False Origin"                    (00000112:00000142) = 0000004F
-"Toggle X-Cursor"                        (00000112:00000145) = 00000058
 "Set 10th Grid Snap"                     (00000112:00000146) = 00022070
 "Toggle Grid"                            (00000112:00000147) = 00000047
 "Center At Cursor"                       (00000112:00000148) = 00000074
