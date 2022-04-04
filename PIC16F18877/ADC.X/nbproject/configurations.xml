@@ -7,12 +7,13 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
-        <itemPath>mcc_generated_files/eusart.h</itemPath>
-        <itemPath>mcc_generated_files/device_config.h</itemPath>
         <itemPath>mcc_generated_files/mcc.h</itemPath>
+        <itemPath>mcc_generated_files/adcc.h</itemPath>
         <itemPath>mcc_generated_files/pin_manager.h</itemPath>
-        <itemPath>mcc_generated_files/tmr2.h</itemPath>
+        <itemPath>mcc_generated_files/device_config.h</itemPath>
+        <itemPath>mcc_generated_files/eusart.h</itemPath>
+        <itemPath>mcc_generated_files/fvr.h</itemPath>
+        <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -26,11 +27,12 @@
                      displayName="MCC Generated Files"
                      projectFiles="true">
         <itemPath>mcc_generated_files/device_config.c</itemPath>
-        <itemPath>mcc_generated_files/pin_manager.c</itemPath>
         <itemPath>mcc_generated_files/eusart.c</itemPath>
-        <itemPath>mcc_generated_files/mcc.c</itemPath>
+        <itemPath>mcc_generated_files/adcc.c</itemPath>
+        <itemPath>mcc_generated_files/pin_manager.c</itemPath>
         <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
-        <itemPath>mcc_generated_files/tmr2.c</itemPath>
+        <itemPath>mcc_generated_files/mcc.c</itemPath>
+        <itemPath>mcc_generated_files/fvr.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -38,7 +40,8 @@
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
-      <itemPath>IOC.mc3</itemPath>
+      <itemPath>ADC.mc3</itemPath>
+      <itemPath>CleanDist.bat</itemPath>
       <itemPath>Download2Kit.bat</itemPath>
     </logicalFolder>
   </logicalFolder>
@@ -56,7 +59,7 @@
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC16F1xxxx_DFP" vendor="Microchip" version="1.9.163"/>
+        <pack name="PIC16F1xxxx_DFP" vendor="Microchip" version="1.13.178"/>
       </packs>
       <ScriptingSettings>
       </ScriptingSettings>
@@ -158,7 +161,7 @@
         <property key="link-in-c-library" value="true"/>
         <property key="link-in-c-library-gcc" value=""/>
         <property key="link-in-peripheral-library" value="false"/>
-        <property key="managed-stack" value="false"/>
+        <property key="managed-stack" value="true"/>
         <property key="opt-xc8-linker-file" value="false"/>
         <property key="opt-xc8-linker-link_startup" value="false"/>
         <property key="opt-xc8-linker-serial" value=""/>
