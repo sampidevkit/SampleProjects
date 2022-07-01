@@ -21,7 +21,7 @@
 #define MSSP2_I2C_MasterStartRx()            SSP2CON2bits.RCEN=1
 #define MSSP2_I2C_MasterDisableRestart()     SSP2CON2bits.RSEN=0
 #define MSSP2_I2C_MasterEnableRestart()      SSP2CON2bits.RSEN=1
-#define MSSP2_I2C_MasterSendTxData(data)     SSP2BUF =data
+#define MSSP2_I2C_MasterSendTxData(data)     SSP2BUF=data
 #define MSSP2_I2C_MasterGetRxData()          SSP2BUF
 
 void MSSP2_I2C_Master_Init(uint32_t clock)
@@ -30,6 +30,7 @@ void MSSP2_I2C_Master_Init(uint32_t clock)
 
     __db("\n%s: ", __FUNCTION__);
 
+    PMD4bits.MSSP2MD=0; // enable MSSP module
     SSP2CON1=0x08; // disable I2C, Master mode, clock=FOSC / (4 * (SSPxADD+1))
     SSP2CON2=0x00;
     SSP2STAT=0x00;
@@ -48,17 +49,123 @@ void MSSP2_I2C_Master_Init(uint32_t clock)
     __db("SSP2ADD=%02X\n", SSP2ADD);
 }
 
+void MSSP2_I2C_Master_Deinit(void)
+{
+    SSP2CON1bits.SSPEN=0; // disable I2C
+    PMD4bits.MSSP2MD=1; // disable MSSP module
+}
+
 bool MSSP2_I2C_Master_ReadNByte(uint8_t slvAddr, uint8_t *pD, uint8_t len)
 {
-    return 1;
+    bool rslt=0;
+    // clear event
+    MSSP2_I2C_MasterClearBusCollision();
+    MSSP2_I2C_MasterClearIrq();
+    // enable I2C
+    MSSP2_I2C_MasterOpen();
+    // send start bit
+    MSSP2_I2C_MasterStart();
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // send slave address
+    MSSP2_I2C_MasterSendTxData((uint8_t)((slvAddr<<1)|1));
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // get ACK
+    rslt|=MSSP2_I2C_MasterIsNack();
+    // get N-1 byte data
+    while(len>1)
+    {
+        // enable receive
+        MSSP2_I2C_MasterStartRx();
+        len--;
+        // get data
+        *pD=MSSP2_I2C_MasterGetRxData();
+        pD++;
+        // wait for event
+        MSSP2_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP2_I2C_MasterClearIrq();
+        // send ACK
+        MSSP2_I2C_MasterSendAck();
+        // wait for event
+        MSSP2_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP2_I2C_MasterClearIrq();
+    }
+    // enable receive
+    MSSP2_I2C_MasterStartRx();
+    // get last data
+    *pD=MSSP2_I2C_MasterGetRxData();
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // send NACK
+    MSSP2_I2C_MasterSendNack();
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // send stop bit
+    MSSP2_I2C_MasterStop();
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // disable I2C
+    MSSP2_I2C_MasterClose();
+
+    return !rslt;
 }
 
 bool MSSP2_I2C_Master_WriteNByte(uint8_t slvAddr, const uint8_t *pD, uint8_t len)
 {
-    bool ack;
-
+    bool rslt=0;
+    // clear event
+    MSSP2_I2C_MasterClearBusCollision();
+    MSSP2_I2C_MasterClearIrq();
+    // enable I2C
+    MSSP2_I2C_MasterOpen();
+    // send start bit
     MSSP2_I2C_MasterStart();
-    
-    
-    return 1;
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // send slave address
+    MSSP2_I2C_MasterSendTxData((uint8_t)(slvAddr<<1));
+    // write N byte data
+    while(len>0)
+    {
+        // wait for event
+        MSSP2_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP2_I2C_MasterClearIrq();
+        // get ACK
+        rslt|=MSSP2_I2C_MasterIsNack();
+        len--;
+        // send data
+        MSSP2_I2C_MasterSendTxData(*pD++);
+    }
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // get ACK
+    rslt|=MSSP2_I2C_MasterIsNack();
+    // send stop bit
+    MSSP2_I2C_MasterStop();
+    // wait for event
+    MSSP2_I2C_MasterWaitForEvent();
+    // clear event
+    MSSP2_I2C_MasterClearIrq();
+    // disable I2C
+    MSSP2_I2C_MasterClose();
+
+    return !rslt;
 }

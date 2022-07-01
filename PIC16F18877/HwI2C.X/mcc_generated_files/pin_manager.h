@@ -65,57 +65,41 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
-// get/set STT_LED aliases
-#define STT_LED_TRIS                 TRISAbits.TRISA1
-#define STT_LED_LAT                  LATAbits.LATA1
-#define STT_LED_PORT                 PORTAbits.RA1
-#define STT_LED_WPU                  WPUAbits.WPUA1
-#define STT_LED_OD                   ODCONAbits.ODCA1
-#define STT_LED_ANS                  ANSELAbits.ANSA1
-#define STT_LED_SetHigh()            do { LATAbits.LATA1 = 1; } while(0)
-#define STT_LED_SetLow()             do { LATAbits.LATA1 = 0; } while(0)
-#define STT_LED_Toggle()             do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0)
-#define STT_LED_GetValue()           PORTAbits.RA1
-#define STT_LED_SetDigitalInput()    do { TRISAbits.TRISA1 = 1; } while(0)
-#define STT_LED_SetDigitalOutput()   do { TRISAbits.TRISA1 = 0; } while(0)
-#define STT_LED_SetPullup()          do { WPUAbits.WPUA1 = 1; } while(0)
-#define STT_LED_ResetPullup()        do { WPUAbits.WPUA1 = 0; } while(0)
-#define STT_LED_SetPushPull()        do { ODCONAbits.ODCA1 = 0; } while(0)
-#define STT_LED_SetOpenDrain()       do { ODCONAbits.ODCA1 = 1; } while(0)
-#define STT_LED_SetAnalogMode()      do { ANSELAbits.ANSA1 = 1; } while(0)
-#define STT_LED_SetDigitalMode()     do { ANSELAbits.ANSA1 = 0; } while(0)
+// get/set RA1 procedures
+#define RA1_SetHigh()            do { LATAbits.LATA1 = 1; } while(0)
+#define RA1_SetLow()             do { LATAbits.LATA1 = 0; } while(0)
+#define RA1_Toggle()             do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0)
+#define RA1_GetValue()              PORTAbits.RA1
+#define RA1_SetDigitalInput()    do { TRISAbits.TRISA1 = 1; } while(0)
+#define RA1_SetDigitalOutput()   do { TRISAbits.TRISA1 = 0; } while(0)
+#define RA1_SetPullup()             do { WPUAbits.WPUA1 = 1; } while(0)
+#define RA1_ResetPullup()           do { WPUAbits.WPUA1 = 0; } while(0)
+#define RA1_SetAnalogMode()         do { ANSELAbits.ANSA1 = 1; } while(0)
+#define RA1_SetDigitalMode()        do { ANSELAbits.ANSA1 = 0; } while(0)
 
-// get/set I2C_VBUS aliases
-#define I2C_VBUS_TRIS                 TRISAbits.TRISA2
-#define I2C_VBUS_LAT                  LATAbits.LATA2
-#define I2C_VBUS_PORT                 PORTAbits.RA2
-#define I2C_VBUS_WPU                  WPUAbits.WPUA2
-#define I2C_VBUS_OD                   ODCONAbits.ODCA2
-#define I2C_VBUS_ANS                  ANSELAbits.ANSA2
-#define I2C_VBUS_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
-#define I2C_VBUS_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
-#define I2C_VBUS_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
-#define I2C_VBUS_GetValue()           PORTAbits.RA2
-#define I2C_VBUS_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
-#define I2C_VBUS_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
-#define I2C_VBUS_SetPullup()          do { WPUAbits.WPUA2 = 1; } while(0)
-#define I2C_VBUS_ResetPullup()        do { WPUAbits.WPUA2 = 0; } while(0)
-#define I2C_VBUS_SetPushPull()        do { ODCONAbits.ODCA2 = 0; } while(0)
-#define I2C_VBUS_SetOpenDrain()       do { ODCONAbits.ODCA2 = 1; } while(0)
-#define I2C_VBUS_SetAnalogMode()      do { ANSELAbits.ANSA2 = 1; } while(0)
-#define I2C_VBUS_SetDigitalMode()     do { ANSELAbits.ANSA2 = 0; } while(0)
+// get/set RB1 procedures
+#define RB1_SetHigh()            do { LATBbits.LATB1 = 1; } while(0)
+#define RB1_SetLow()             do { LATBbits.LATB1 = 0; } while(0)
+#define RB1_Toggle()             do { LATBbits.LATB1 = ~LATBbits.LATB1; } while(0)
+#define RB1_GetValue()              PORTBbits.RB1
+#define RB1_SetDigitalInput()    do { TRISBbits.TRISB1 = 1; } while(0)
+#define RB1_SetDigitalOutput()   do { TRISBbits.TRISB1 = 0; } while(0)
+#define RB1_SetPullup()             do { WPUBbits.WPUB1 = 1; } while(0)
+#define RB1_ResetPullup()           do { WPUBbits.WPUB1 = 0; } while(0)
+#define RB1_SetAnalogMode()         do { ANSELBbits.ANSB1 = 1; } while(0)
+#define RB1_SetDigitalMode()        do { ANSELBbits.ANSB1 = 0; } while(0)
 
-// get/set RB3 procedures
-#define RB3_SetHigh()            do { LATBbits.LATB3 = 1; } while(0)
-#define RB3_SetLow()             do { LATBbits.LATB3 = 0; } while(0)
-#define RB3_Toggle()             do { LATBbits.LATB3 = ~LATBbits.LATB3; } while(0)
-#define RB3_GetValue()              PORTBbits.RB3
-#define RB3_SetDigitalInput()    do { TRISBbits.TRISB3 = 1; } while(0)
-#define RB3_SetDigitalOutput()   do { TRISBbits.TRISB3 = 0; } while(0)
-#define RB3_SetPullup()             do { WPUBbits.WPUB3 = 1; } while(0)
-#define RB3_ResetPullup()           do { WPUBbits.WPUB3 = 0; } while(0)
-#define RB3_SetAnalogMode()         do { ANSELBbits.ANSB3 = 1; } while(0)
-#define RB3_SetDigitalMode()        do { ANSELBbits.ANSB3 = 0; } while(0)
+// get/set RB2 procedures
+#define RB2_SetHigh()            do { LATBbits.LATB2 = 1; } while(0)
+#define RB2_SetLow()             do { LATBbits.LATB2 = 0; } while(0)
+#define RB2_Toggle()             do { LATBbits.LATB2 = ~LATBbits.LATB2; } while(0)
+#define RB2_GetValue()              PORTBbits.RB2
+#define RB2_SetDigitalInput()    do { TRISBbits.TRISB2 = 1; } while(0)
+#define RB2_SetDigitalOutput()   do { TRISBbits.TRISB2 = 0; } while(0)
+#define RB2_SetPullup()             do { WPUBbits.WPUB2 = 1; } while(0)
+#define RB2_ResetPullup()           do { WPUBbits.WPUB2 = 0; } while(0)
+#define RB2_SetAnalogMode()         do { ANSELBbits.ANSB2 = 1; } while(0)
+#define RB2_SetDigitalMode()        do { ANSELBbits.ANSB2 = 0; } while(0)
 
 // get/set RB5 procedures
 #define RB5_SetHigh()            do { LATBbits.LATB5 = 1; } while(0)
@@ -129,37 +113,77 @@
 #define RB5_SetAnalogMode()         do { ANSELBbits.ANSB5 = 1; } while(0)
 #define RB5_SetDigitalMode()        do { ANSELBbits.ANSB5 = 0; } while(0)
 
-// get/set RD6 procedures
-#define RD6_SetHigh()            do { LATDbits.LATD6 = 1; } while(0)
-#define RD6_SetLow()             do { LATDbits.LATD6 = 0; } while(0)
-#define RD6_Toggle()             do { LATDbits.LATD6 = ~LATDbits.LATD6; } while(0)
-#define RD6_GetValue()              PORTDbits.RD6
-#define RD6_SetDigitalInput()    do { TRISDbits.TRISD6 = 1; } while(0)
-#define RD6_SetDigitalOutput()   do { TRISDbits.TRISD6 = 0; } while(0)
-#define RD6_SetPullup()             do { WPUDbits.WPUD6 = 1; } while(0)
-#define RD6_ResetPullup()           do { WPUDbits.WPUD6 = 0; } while(0)
-#define RD6_SetAnalogMode()         do { ANSELDbits.ANSD6 = 1; } while(0)
-#define RD6_SetDigitalMode()        do { ANSELDbits.ANSD6 = 0; } while(0)
+// get/set I2C_VBUS aliases
+#define I2C_VBUS_TRIS                 TRISCbits.TRISC2
+#define I2C_VBUS_LAT                  LATCbits.LATC2
+#define I2C_VBUS_PORT                 PORTCbits.RC2
+#define I2C_VBUS_WPU                  WPUCbits.WPUC2
+#define I2C_VBUS_OD                   ODCONCbits.ODCC2
+#define I2C_VBUS_ANS                  ANSELCbits.ANSC2
+#define I2C_VBUS_SetHigh()            do { LATCbits.LATC2 = 1; } while(0)
+#define I2C_VBUS_SetLow()             do { LATCbits.LATC2 = 0; } while(0)
+#define I2C_VBUS_Toggle()             do { LATCbits.LATC2 = ~LATCbits.LATC2; } while(0)
+#define I2C_VBUS_GetValue()           PORTCbits.RC2
+#define I2C_VBUS_SetDigitalInput()    do { TRISCbits.TRISC2 = 1; } while(0)
+#define I2C_VBUS_SetDigitalOutput()   do { TRISCbits.TRISC2 = 0; } while(0)
+#define I2C_VBUS_SetPullup()          do { WPUCbits.WPUC2 = 1; } while(0)
+#define I2C_VBUS_ResetPullup()        do { WPUCbits.WPUC2 = 0; } while(0)
+#define I2C_VBUS_SetPushPull()        do { ODCONCbits.ODCC2 = 0; } while(0)
+#define I2C_VBUS_SetOpenDrain()       do { ODCONCbits.ODCC2 = 1; } while(0)
+#define I2C_VBUS_SetAnalogMode()      do { ANSELCbits.ANSC2 = 1; } while(0)
+#define I2C_VBUS_SetDigitalMode()     do { ANSELCbits.ANSC2 = 0; } while(0)
 
-// get/set I2C_INT aliases
-#define I2C_INT_TRIS                 TRISDbits.TRISD7
-#define I2C_INT_LAT                  LATDbits.LATD7
-#define I2C_INT_PORT                 PORTDbits.RD7
-#define I2C_INT_WPU                  WPUDbits.WPUD7
-#define I2C_INT_OD                   ODCONDbits.ODCD7
-#define I2C_INT_ANS                  ANSELDbits.ANSD7
-#define I2C_INT_SetHigh()            do { LATDbits.LATD7 = 1; } while(0)
-#define I2C_INT_SetLow()             do { LATDbits.LATD7 = 0; } while(0)
-#define I2C_INT_Toggle()             do { LATDbits.LATD7 = ~LATDbits.LATD7; } while(0)
-#define I2C_INT_GetValue()           PORTDbits.RD7
-#define I2C_INT_SetDigitalInput()    do { TRISDbits.TRISD7 = 1; } while(0)
-#define I2C_INT_SetDigitalOutput()   do { TRISDbits.TRISD7 = 0; } while(0)
-#define I2C_INT_SetPullup()          do { WPUDbits.WPUD7 = 1; } while(0)
-#define I2C_INT_ResetPullup()        do { WPUDbits.WPUD7 = 0; } while(0)
-#define I2C_INT_SetPushPull()        do { ODCONDbits.ODCD7 = 0; } while(0)
-#define I2C_INT_SetOpenDrain()       do { ODCONDbits.ODCD7 = 1; } while(0)
-#define I2C_INT_SetAnalogMode()      do { ANSELDbits.ANSD7 = 1; } while(0)
-#define I2C_INT_SetDigitalMode()     do { ANSELDbits.ANSD7 = 0; } while(0)
+// get/set GND aliases
+#define GND_TRIS                 TRISCbits.TRISC3
+#define GND_LAT                  LATCbits.LATC3
+#define GND_PORT                 PORTCbits.RC3
+#define GND_WPU                  WPUCbits.WPUC3
+#define GND_OD                   ODCONCbits.ODCC3
+#define GND_ANS                  ANSELCbits.ANSC3
+#define GND_SetHigh()            do { LATCbits.LATC3 = 1; } while(0)
+#define GND_SetLow()             do { LATCbits.LATC3 = 0; } while(0)
+#define GND_Toggle()             do { LATCbits.LATC3 = ~LATCbits.LATC3; } while(0)
+#define GND_GetValue()           PORTCbits.RC3
+#define GND_SetDigitalInput()    do { TRISCbits.TRISC3 = 1; } while(0)
+#define GND_SetDigitalOutput()   do { TRISCbits.TRISC3 = 0; } while(0)
+#define GND_SetPullup()          do { WPUCbits.WPUC3 = 1; } while(0)
+#define GND_ResetPullup()        do { WPUCbits.WPUC3 = 0; } while(0)
+#define GND_SetPushPull()        do { ODCONCbits.ODCC3 = 0; } while(0)
+#define GND_SetOpenDrain()       do { ODCONCbits.ODCC3 = 1; } while(0)
+#define GND_SetAnalogMode()      do { ANSELCbits.ANSC3 = 1; } while(0)
+#define GND_SetDigitalMode()     do { ANSELCbits.ANSC3 = 0; } while(0)
+
+// get/set RD2 procedures
+#define RD2_SetHigh()            do { LATDbits.LATD2 = 1; } while(0)
+#define RD2_SetLow()             do { LATDbits.LATD2 = 0; } while(0)
+#define RD2_Toggle()             do { LATDbits.LATD2 = ~LATDbits.LATD2; } while(0)
+#define RD2_GetValue()              PORTDbits.RD2
+#define RD2_SetDigitalInput()    do { TRISDbits.TRISD2 = 1; } while(0)
+#define RD2_SetDigitalOutput()   do { TRISDbits.TRISD2 = 0; } while(0)
+#define RD2_SetPullup()             do { WPUDbits.WPUD2 = 1; } while(0)
+#define RD2_ResetPullup()           do { WPUDbits.WPUD2 = 0; } while(0)
+#define RD2_SetAnalogMode()         do { ANSELDbits.ANSD2 = 1; } while(0)
+#define RD2_SetDigitalMode()        do { ANSELDbits.ANSD2 = 0; } while(0)
+
+// get/set STT_LED_N aliases
+#define STT_LED_N_TRIS                 TRISDbits.TRISD3
+#define STT_LED_N_LAT                  LATDbits.LATD3
+#define STT_LED_N_PORT                 PORTDbits.RD3
+#define STT_LED_N_WPU                  WPUDbits.WPUD3
+#define STT_LED_N_OD                   ODCONDbits.ODCD3
+#define STT_LED_N_ANS                  ANSELDbits.ANSD3
+#define STT_LED_N_SetHigh()            do { LATDbits.LATD3 = 1; } while(0)
+#define STT_LED_N_SetLow()             do { LATDbits.LATD3 = 0; } while(0)
+#define STT_LED_N_Toggle()             do { LATDbits.LATD3 = ~LATDbits.LATD3; } while(0)
+#define STT_LED_N_GetValue()           PORTDbits.RD3
+#define STT_LED_N_SetDigitalInput()    do { TRISDbits.TRISD3 = 1; } while(0)
+#define STT_LED_N_SetDigitalOutput()   do { TRISDbits.TRISD3 = 0; } while(0)
+#define STT_LED_N_SetPullup()          do { WPUDbits.WPUD3 = 1; } while(0)
+#define STT_LED_N_ResetPullup()        do { WPUDbits.WPUD3 = 0; } while(0)
+#define STT_LED_N_SetPushPull()        do { ODCONDbits.ODCD3 = 0; } while(0)
+#define STT_LED_N_SetOpenDrain()       do { ODCONDbits.ODCD3 = 1; } while(0)
+#define STT_LED_N_SetAnalogMode()      do { ANSELDbits.ANSD3 = 1; } while(0)
+#define STT_LED_N_SetDigitalMode()     do { ANSELDbits.ANSD3 = 0; } while(0)
 
 /**
    @Param

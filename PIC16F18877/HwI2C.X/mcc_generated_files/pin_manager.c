@@ -58,35 +58,35 @@ void PIN_MANAGER_Initialize(void)
     LATx registers
     */
     LATE = 0x00;
-    LATD = 0x00;
+    LATD = 0x08;
     LATA = 0x00;
     LATB = 0x20;
-    LATC = 0x00;
+    LATC = 0x04;
 
     /**
     TRISx registers
     */
     TRISE = 0x07;
-    TRISA = 0xF9;
+    TRISA = 0xFD;
     TRISB = 0xDF;
-    TRISC = 0xFF;
-    TRISD = 0xFF;
+    TRISC = 0xF3;
+    TRISD = 0xF7;
 
     /**
     ANSELx registers
     */
-    ANSELD = 0x3F;
-    ANSELC = 0xFF;
-    ANSELB = 0xD7;
+    ANSELD = 0xF3;
+    ANSELC = 0xF3;
+    ANSELB = 0xD9;
     ANSELE = 0x07;
     ANSELA = 0xF9;
 
     /**
     WPUx registers
     */
-    WPUD = 0x00;
+    WPUD = 0x08;
     WPUE = 0x00;
-    WPUB = 0x10;
+    WPUB = 0x14;
     WPUA = 0x00;
     WPUC = 0x00;
 
@@ -97,7 +97,7 @@ void PIN_MANAGER_Initialize(void)
     ODCONA = 0x00;
     ODCONB = 0x00;
     ODCONC = 0x00;
-    ODCOND = 0x00;
+    ODCOND = 0x08;
 
     /**
     SLRCONx registers
@@ -124,11 +124,13 @@ void PIN_MANAGER_Initialize(void)
    
     
 	
-    SSP2DATPPS = 0x1E;   //RD6->MSSP2:SDA2;    
+    RD2PPS = 0x17;   //RD2->MSSP2:SDA2;    
+    SSP2DATPPS = 0x1A;   //RD2->MSSP2:SDA2;    
+    RB1PPS = 0x16;   //RB1->MSSP2:SCL2;    
+    CLCIN3PPS = 0x0A;   //RB2->CLC1:CLCIN3;    
     RB5PPS = 0x10;   //RB5->EUSART:TX;    
-    RB3PPS = 0x16;   //RB3->MSSP2:SCL2;    
-    RD6PPS = 0x17;   //RD6->MSSP2:SDA2;    
-    SSP2CLKPPS = 0x0B;   //RB3->MSSP2:SCL2;    
+    RA1PPS = 0x01;   //RA1->CLC1:CLC1OUT;    
+    SSP2CLKPPS = 0x09;   //RB1->MSSP2:SCL2;    
 }
   
 void PIN_MANAGER_IOC(void)
