@@ -1,6 +1,14 @@
 #include "libcomp.h"
 #include "mssp2_i2c_master.h"
 
+#ifdef __db
+#undef __db
+#endif
+
+#define __db(...)
+
+static uint8_t mssp2_i2c_timeout=255;
+
 #define MSSP2_I2C_MasterOpen()               SSP2CON1bits.SSPEN=1
 #define MSSP2_I2C_MasterClose()              SSP2CON1bits.SSPEN=0
 
@@ -9,7 +17,7 @@
 #define MSSP2_I2C_MasterSetIrq()             PIR3bits.SSP2IF=1
 #define MSSP2_I2C_MasterClearIrq()           PIR3bits.SSP2IF=0
 #define MSSP2_I2C_MasterIsIrqEnabled()       PIE3bits.SSP2IE
-#define MSSP2_I2C_MasterWaitForEvent()       while(PIR3bits.SSP2IF==0)
+#define MSSP2_I2C_MasterWaitForEvent()       if(mssp2_i2c_timeout>0){mssp2_i2c_timeout=255; while((PIR3bits.SSP2IF==0)&&(--mssp2_i2c_timeout>0)) __delay_us(5);}
 
 #define MSSP2_I2C_MasterIsRxBufFull()        SSP2STATbits.BF
 #define MSSP2_I2C_MasterClearBusCollision()  PIR3bits.BCL2IF=0
@@ -45,12 +53,14 @@ void MSSP2_I2C_Master_Init(uint32_t clock)
         tmp=0;
 
     SSP2ADD=(uint8_t) tmp;
+    mssp2_i2c_timeout=255;
 
     __db("SSP2ADD=%02X\n", SSP2ADD);
 }
 
 void MSSP2_I2C_Master_Deinit(void)
 {
+    mssp2_i2c_timeout=0;
     SSP2CON1bits.SSPEN=0; // disable I2C
     PMD4bits.MSSP2MD=1; // disable MSSP module
 }
@@ -58,6 +68,8 @@ void MSSP2_I2C_Master_Deinit(void)
 bool MSSP2_I2C_Master_ReadNByte(uint8_t slvAddr, uint8_t *pD, uint8_t len)
 {
     bool rslt=0;
+    
+    mssp2_i2c_timeout=255;
     // clear event
     MSSP2_I2C_MasterClearBusCollision();
     MSSP2_I2C_MasterClearIrq();
@@ -70,7 +82,7 @@ bool MSSP2_I2C_Master_ReadNByte(uint8_t slvAddr, uint8_t *pD, uint8_t len)
     // clear event
     MSSP2_I2C_MasterClearIrq();
     // send slave address
-    MSSP2_I2C_MasterSendTxData((uint8_t)((slvAddr<<1)|1));
+    MSSP2_I2C_MasterSendTxData((uint8_t) ((slvAddr<<1)|1));
     // wait for event
     MSSP2_I2C_MasterWaitForEvent();
     // clear event
@@ -120,12 +132,17 @@ bool MSSP2_I2C_Master_ReadNByte(uint8_t slvAddr, uint8_t *pD, uint8_t len)
     // disable I2C
     MSSP2_I2C_MasterClose();
 
-    return !rslt;
+    if(mssp2_i2c_timeout>0)
+        return !rslt;
+
+    return 0;
 }
 
 bool MSSP2_I2C_Master_WriteNByte(uint8_t slvAddr, const uint8_t *pD, uint8_t len)
 {
     bool rslt=0;
+    
+    mssp2_i2c_timeout=255;
     // clear event
     MSSP2_I2C_MasterClearBusCollision();
     MSSP2_I2C_MasterClearIrq();
@@ -138,7 +155,7 @@ bool MSSP2_I2C_Master_WriteNByte(uint8_t slvAddr, const uint8_t *pD, uint8_t len
     // clear event
     MSSP2_I2C_MasterClearIrq();
     // send slave address
-    MSSP2_I2C_MasterSendTxData((uint8_t)(slvAddr<<1));
+    MSSP2_I2C_MasterSendTxData((uint8_t) (slvAddr<<1));
     // write N byte data
     while(len>0)
     {
@@ -167,5 +184,8 @@ bool MSSP2_I2C_Master_WriteNByte(uint8_t slvAddr, const uint8_t *pD, uint8_t len
     // disable I2C
     MSSP2_I2C_MasterClose();
 
-    return !rslt;
+    if(mssp2_i2c_timeout>0)
+        return !rslt;
+
+    return 0;
 }

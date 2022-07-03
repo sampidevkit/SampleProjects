@@ -19,6 +19,7 @@
       </logicalFolder>
       <itemPath>libcomp.h</itemPath>
       <itemPath>mssp2_i2c_master.h</itemPath>
+      <itemPath>mssp1_i2c_master.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -43,6 +44,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>libcomp.c</itemPath>
       <itemPath>mssp2_i2c_master.c</itemPath>
+      <itemPath>mssp1_i2c_master.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -53,6 +55,9 @@
       <itemPath>Download2Kit.bat</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
