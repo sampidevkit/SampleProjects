@@ -1,5 +1,10 @@
 #include "libcomp.h"
 
+static void ScanFound(uint8_t slvAddr)
+{
+    __db("\nFound %02X", slvAddr);
+}
+
 static void Plot(uint16_t Data)
 {
     uint8_t i;
@@ -30,13 +35,24 @@ static void Plot(uint16_t Data)
 
 void main(void)
 {
+    int8_t DeviceFound;
+
     SYSTEM_Initialize();
     __db("\nPIC16F18877 I2C\n");
-    __delay_ms(100);
     I2C_VBUS_SetHigh();
+    __delay_ms(100);
     MSSP2_I2C_Master_Init(100000);
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
+
+    do
+    {
+        CLRWDT();
+        __delay_ms(100);
+        DeviceFound=MSSP2_I2C_Master_Scan(ScanFound);
+        __db("\nFound %d I2C device(s)\n", DeviceFound);
+    }
+    while(DeviceFound==0);
 
     while(1)
     {

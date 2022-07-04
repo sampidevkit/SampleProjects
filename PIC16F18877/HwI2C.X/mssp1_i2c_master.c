@@ -65,10 +65,75 @@ void MSSP1_I2C_Master_Deinit(void)
     PMD4bits.MSSP1MD=1; // disable MSSP module
 }
 
+int8_t MSSP1_I2C_Master_Scan(void (*pStreamFnc)(uint8_t))
+{
+    int8_t found;
+    uint8_t slvAddr;
+
+    if(pStreamFnc==NULL)
+        return -1; // error
+
+    for(slvAddr=0, found=0; slvAddr<127; slvAddr++)
+    {
+        bool rslt=0;
+
+        mssp1_i2c_timeout=255;
+        // clear event
+        MSSP1_I2C_MasterClearBusCollision();
+        MSSP1_I2C_MasterClearIrq();
+        // enable I2C
+        MSSP1_I2C_MasterOpen();
+        // send start bit
+        MSSP1_I2C_MasterStart();
+        // wait for event
+        MSSP1_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP1_I2C_MasterClearIrq();
+        // send slave address
+        MSSP1_I2C_MasterSendTxData((uint8_t) ((slvAddr<<1)|1));
+        // wait for event
+        MSSP1_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP1_I2C_MasterClearIrq();
+        // get ACK
+        rslt|=MSSP1_I2C_MasterIsNack();
+        // enable receive
+        MSSP1_I2C_MasterStartRx();
+        // get last data
+        uint8_t dummy=MSSP1_I2C_MasterGetRxData();
+        // wait for event
+        MSSP1_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP1_I2C_MasterClearIrq();
+        // send NACK
+        MSSP1_I2C_MasterSendNack();
+        // wait for event
+        MSSP1_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP1_I2C_MasterClearIrq();
+        // send stop bit
+        MSSP1_I2C_MasterStop();
+        // wait for event
+        MSSP1_I2C_MasterWaitForEvent();
+        // clear event
+        MSSP1_I2C_MasterClearIrq();
+        // disable I2C
+        MSSP1_I2C_MasterClose();
+
+        if((mssp1_i2c_timeout>0)&&(!rslt))
+        {
+            found++;
+            pStreamFnc(slvAddr);
+        }
+    }
+
+    return found;
+}
+
 bool MSSP1_I2C_Master_ReadNByte(uint8_t slvAddr, uint8_t *pD, uint8_t len)
 {
     bool rslt=0;
-    
+
     mssp1_i2c_timeout=255;
     // clear event
     MSSP1_I2C_MasterClearBusCollision();
@@ -141,7 +206,7 @@ bool MSSP1_I2C_Master_ReadNByte(uint8_t slvAddr, uint8_t *pD, uint8_t len)
 bool MSSP1_I2C_Master_WriteNByte(uint8_t slvAddr, const uint8_t *pD, uint8_t len)
 {
     bool rslt=0;
-    
+
     mssp1_i2c_timeout=255;
     // clear event
     MSSP1_I2C_MasterClearBusCollision();
