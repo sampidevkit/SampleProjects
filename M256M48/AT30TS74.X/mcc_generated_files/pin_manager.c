@@ -61,16 +61,16 @@ void PIN_MANAGER_Initialize (void)
     /****************************************************************************
      * Setting the Output Latch SFR(s)
      ***************************************************************************/
-    LATA = 0x0000;
-    LATB = 0x0000;
-    LATC = 0x0000;
+    LATA = 0x0010;
+    LATB = 0x800C;
+    LATC = 0x00A8;
     LATD = 0x0000;
 
     /****************************************************************************
      * Setting the GPIO Direction SFR(s)
      ***************************************************************************/
-    TRISA = 0x87C7;
-    TRISB = 0xEFFF;
+    TRISA = 0x8757;
+    TRISB = 0xCFF3;
     TRISC = 0x13FF;
     TRISD = 0x0001;
 
@@ -82,35 +82,24 @@ void PIN_MANAGER_Initialize (void)
     CNPDC = 0x0000;
     CNPDD = 0x0000;
     CNPUA = 0x0000;
-    CNPUB = 0x0000;
-    CNPUC = 0x0000;
+    CNPUB = 0x8000;
+    CNPUC = 0x0028;
     CNPUD = 0x0000;
 
     /****************************************************************************
      * Setting the Open Drain SFR(s)
      ***************************************************************************/
     ODCA = 0x0000;
-    ODCB = 0x0000;
-    ODCC = 0x0000;
+    ODCB = 0x800C;
+    ODCC = 0x0028;
     ODCD = 0x0000;
 
     /****************************************************************************
      * Setting the Analog/Digital Configuration SFR(s)
      ***************************************************************************/
-    ANSELA = 0x0043;
-    ANSELB = 0xE00C;
+    ANSELA = 0x004F;
+    ANSELB = 0xC01C;
     ANSELC = 0x0123;
 
-    /****************************************************************************
-     * Set the PPS
-     ***************************************************************************/
-    SYSTEM_RegUnlock(); // unlock PPS
-    RPCONbits.IOLOCK = 0;
-
-    RPINR9bits.U2RXR = 0x000A;    //RB4->UART2:U2RX
-    RPOR1bits.RP5R = 0x0004;    //RA4->UART2:U2TX
-
-    RPCONbits.IOLOCK = 1; // lock   PPS
-    SYSTEM_RegLock(); 
 }
 

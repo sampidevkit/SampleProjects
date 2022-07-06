@@ -28,51 +28,49 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
-
-#define INLINE  //inline 
  
 typedef void (*interruptHandler)(void);
 
 /* arbitration interface */
-INLINE void i2c1_driver_close(void);
+void i2c1_driver_close(void);
 
 /* Interrupt interfaces */
-INLINE void i2c1_enableIRQ(void);
-INLINE bool i2c1_IRQisEnabled(void);
-INLINE void i2c1_disableIRQ(void);
-INLINE void i2c1_clearIRQ(void);
-INLINE void i2c1_setIRQ(void);
-INLINE void i2c1_waitForEvent(uint16_t*);
+void i2c1_enableIRQ(void);
+bool i2c1_IRQisEnabled(void);
+void i2c1_disableIRQ(void);
+void i2c1_clearIRQ(void);
+void i2c1_setIRQ(void);
+void i2c1_waitForEvent(uint16_t*);
 
 /* I2C interfaces */
 bool  i2c1_driver_driver_open(void);
-INLINE char i2c1_driver_getRXData(void);
-INLINE void i2c1_driver_TXData(uint8_t);
-INLINE void i2c1_driver_resetBus(void);
-INLINE void i2c1_driver_start(void);
-INLINE void i2c1_driver_restart(void);
-INLINE void i2c1_driver_stop(void);
-INLINE bool i2c1_driver_isNACK(void);
-INLINE void i2c1_driver_startRX(void);
-INLINE void i2c1_driver_sendACK(void);
-INLINE void i2c1_driver_sendNACK(void);
-INLINE void i2c1_driver_clearBusCollision(void);
+char i2c1_driver_getRXData(void);
+void i2c1_driver_TXData(uint8_t);
+void i2c1_driver_resetBus(void);
+void i2c1_driver_start(void);
+void i2c1_driver_restart(void);
+void i2c1_driver_stop(void);
+bool i2c1_driver_isNACK(void);
+void i2c1_driver_startRX(void);
+void i2c1_driver_sendACK(void);
+void i2c1_driver_sendNACK(void);
+void i2c1_driver_clearBusCollision(void);
 
 bool  i2c1_driver_initSlaveHardware(void);
-INLINE void i2c1_driver_releaseClock(void);
-INLINE bool i2c1_driver_isBuferFull(void);
-INLINE bool i2c1_driver_isStart(void);
-INLINE bool i2c1_driver_isStop(void);
-INLINE bool i2c1_driver_isAddress(void);
-INLINE bool i2c1_driver_isData(void);
-INLINE bool i2c1_driver_isRead(void);
-INLINE void i2c1_driver_enableStartIRQ(void);
-INLINE void i2c1_driver_disableStartIRQ(void);
-INLINE void i2c1_driver_enableStopIRQ(void);
-INLINE void i2c1_driver_disableStopIRQ(void);
+void i2c1_driver_releaseClock(void);
+bool i2c1_driver_isBuferFull(void);
+bool i2c1_driver_isStart(void);
+bool i2c1_driver_isStop(void);
+bool i2c1_driver_isAddress(void);
+bool i2c1_driver_isData(void);
+bool i2c1_driver_isRead(void);
+void i2c1_driver_enableStartIRQ(void);
+void i2c1_driver_disableStartIRQ(void);
+void i2c1_driver_enableStopIRQ(void);
+void i2c1_driver_disableStopIRQ(void);
 
-INLINE void i2c1_driver_setBusCollisionISR(interruptHandler handler);
-INLINE void i2c1_driver_setMasterI2cISR(interruptHandler handler);
-INLINE void i2c1_driver_setSlaveI2cISR(interruptHandler handler);
+void i2c1_driver_setBusCollisionISR(interruptHandler handler);
+void i2c1_driver_setMasterI2cISR(interruptHandler handler);
+void i2c1_driver_setSlaveI2cISR(interruptHandler handler);
 
 #endif // __i2c1_driver_H

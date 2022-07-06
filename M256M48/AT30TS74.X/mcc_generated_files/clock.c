@@ -50,10 +50,10 @@
 void CLOCK_Initialize(void)
 {
     SYSTEM_RegUnlock();
-    // ORPOL disabled; SIDL disabled; SRC SOSC; TUN Center frequency; POL disabled; ON disabled; 
-    OSCTUN = 0x00;
-    // PLLODIV 1:4; PLLMULT 8x; PLLICLK POSC; 
-    SPLLCON = 0x2040000;
+    // ORPOL disabled; SIDL disabled; SRC USB; TUN Center frequency; POL disabled; ON enabled; 
+    OSCTUN = 0x9000;
+    // PLLODIV 1:4; PLLMULT 12x; PLLICLK FRC; 
+    SPLLCON = 0x2050080;
     // SBOREN disabled; VREGS disabled; RETEN disabled; 
     PWRCON = 0x00;
     // CF No Clock Failure; FRCDIV FRC/1; SLPEN Device will enter Idle mode when a WAIT instruction is issued; NOSC SPLL; SOSCEN disabled; CLKLOCK Clock and PLL selections are not locked and may be modified; OSWEN Switch is Complete; 

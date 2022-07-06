@@ -52,12 +52,11 @@
 #include <stdbool.h>
 
 #include "i2c1_driver.h"
-#include "drivers/i2c_simple_master.h"
-#include "uart2.h"
-#include "watchdog.h"
 #include "interrupt_manager.h"
 #include "exceptions.h"
-#include "drivers/i2c_master.h"
+#include "watchdog.h"
+#include "coretimer.h"
+#include "usb/usb.h"
 
 #warning "This file will be removed in future MCC releases. Use system.h instead."
 

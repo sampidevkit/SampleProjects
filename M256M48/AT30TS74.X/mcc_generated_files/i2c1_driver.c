@@ -36,46 +36,46 @@ void (*i2c1_driver_busCollisionISR)(void);
 void (*i2c1_driver_Masteri2cISR)(void);
 void (*i2c1_driver_Slavei2cISR)(void);
 
-inline void i2c1_driver_close(void)
+void i2c1_driver_close(void)
 {
     I2C1CONbits.ON = 0;
 }
 
 /* Interrupt Control */
-inline void i2c1_enableIRQ(void)
-{
-    IEC2bits.I2C1MIE = 1;
-    IEC2bits.I2C1SIE = 1;
-    IEC2bits.I2C1BCIE = 0;
-}
-
-inline bool i2c1_IRQisEnabled(void)
-{
-    return IEC2bits.I2C1MIE || IEC2bits.I2C1SIE || IEC2bits.I2C1BCIE;
-}
-
-inline void i2c1_disableIRQ(void)
+void i2c1_enableIRQ(void)
 {
     IEC2bits.I2C1MIE = 0;
     IEC2bits.I2C1SIE = 0;
     IEC2bits.I2C1BCIE = 0;
 }
 
-inline void i2c1_clearIRQ(void)
+bool i2c1_IRQisEnabled(void)
+{
+    return IEC2bits.I2C1MIE || IEC2bits.I2C1SIE || IEC2bits.I2C1BCIE;
+}
+
+void i2c1_disableIRQ(void)
+{
+    IEC2bits.I2C1MIE = 0;
+    IEC2bits.I2C1SIE = 0;
+    IEC2bits.I2C1BCIE = 0;
+}
+
+void i2c1_clearIRQ(void)
 {
     IFS2bits.I2C1MIF = 0;
     IFS2bits.I2C1SIF = 0;
     IFS2bits.I2C1BCIF = 0;
 }
 
-inline void i2c1_setIRQ(void)
+void i2c1_setIRQ(void)
 {
     IFS2bits.I2C1MIF = 1;
     IFS2bits.I2C1SIF = 1;
     IFS2bits.I2C1BCIF = 1;
 }
 
-inline void i2c1_waitForEvent(uint16_t *timeout)
+void i2c1_waitForEvent(uint16_t *timeout)
 {
     //uint16_t to = (timeout!=NULL)?*timeout:100;
     //to <<= 8;
@@ -138,127 +138,127 @@ bool i2c1_driver_initSlaveHardware(void)
     return false;
 }
 
-inline void i2c1_driver_resetBus(void)
+void i2c1_driver_resetBus(void)
 {
     
 }
 
-inline void i2c1_driver_start(void)
+void i2c1_driver_start(void)
 {
     I2C1CONbits.SEN = 1;
 }
 
-inline void i2c1_driver_restart(void)
+void i2c1_driver_restart(void)
 {
     I2C1CONbits.RSEN = 1;
 }
 
-inline void i2c1_driver_stop(void)
+void i2c1_driver_stop(void)
 {
     I2C1CONbits.PEN = 1;
 }
 
-inline bool i2c1_driver_isNACK(void)
+bool i2c1_driver_isNACK(void)
 {
     return I2C1STATbits.ACKSTAT;
 }
 
-inline void i2c1_driver_startRX(void)
+void i2c1_driver_startRX(void)
 {
     I2C1CONbits.RCEN = 1;
 }
 
-inline char i2c1_driver_getRXData(void)
+char i2c1_driver_getRXData(void)
 {
     return I2C1RCV;
 }
 
-inline void i2c1_driver_TXData(uint8_t d)
+void i2c1_driver_TXData(uint8_t d)
 {
     I2C1TRN = d;
 }
 
-inline void i2c1_driver_sendACK(void)
+void i2c1_driver_sendACK(void)
 {
     I2C1CONbits.ACKDT = 0;
     I2C1CONbits.ACKEN = 1; // start the ACK/NACK
 }
 
-inline void i2c1_driver_sendNACK(void)
+void i2c1_driver_sendNACK(void)
 {
     I2C1CONbits.ACKDT = 1;
     I2C1CONbits.ACKEN = 1; // start the ACK/NACK
 }
 
-inline void i2c1_driver_releaseClock(void)
+void i2c1_driver_releaseClock(void)
 {
     I2C1CONbits.SCLREL = 1;
 }
 
-inline bool i2c1_driver_isBuferFull(void)
+bool i2c1_driver_isBuferFull(void)
 {
     return I2C1STATbits.RBF || I2C1STATbits.TBF;
 }
 
-inline bool i2c1_driver_isStart(void)
+bool i2c1_driver_isStart(void)
 {
     return I2C1STATbits.S;
 }
 
-inline bool i2c1_driver_isAddress(void)
+bool i2c1_driver_isAddress(void)
 {
     return !I2C1STATbits.D_A;
 }
 
-inline bool i2c1_driver_isStop(void)
+bool i2c1_driver_isStop(void)
 {
     return I2C1STATbits.P;
 }
 
-inline bool i2c1_driver_isData(void)
+bool i2c1_driver_isData(void)
 {
     return I2C1STATbits.D_A;
 }
 
-inline bool i2c1_driver_isRead(void)
+bool i2c1_driver_isRead(void)
 {
     return I2C1STATbits.R_W;
 }
 
-inline void i2c1_driver_clearBusCollision(void)
+void i2c1_driver_clearBusCollision(void)
 {
     I2C1STATbits.BCL = 0; // clear the bus collision.
 }
 
-inline void i2c1_driver_enableStartIRQ(void)
+void i2c1_driver_enableStartIRQ(void)
 {
     I2C1CONbits.SCIE = 1;
 }
 
-inline void i2c1_driver_disableStartIRQ(void)
+void i2c1_driver_disableStartIRQ(void)
 {
     I2C1CONbits.SCIE = 0;
 }
 
-inline void i2c1_driver_enableStopIRQ(void)
+void i2c1_driver_enableStopIRQ(void)
 {
     I2C1CONbits.PCIE = 1;
 }
 
-inline void i2c1_driver_disableStopIRQ(void)
+void i2c1_driver_disableStopIRQ(void)
 {
     I2C1CONbits.PCIE = 0;
 }
 
-inline void i2c1_driver_setBusCollisionISR(interruptHandler handler){
+void i2c1_driver_setBusCollisionISR(interruptHandler handler){
     i2c1_driver_busCollisionISR = handler;
 }
 
-inline void i2c1_driver_setMasterI2cISR(interruptHandler handler){
+void i2c1_driver_setMasterI2cISR(interruptHandler handler){
     i2c1_driver_Masteri2cISR = handler;
 }
 
-inline void i2c1_driver_setSlaveI2cISR(interruptHandler handler){
+void i2c1_driver_setSlaveI2cISR(interruptHandler handler){
     i2c1_driver_Slavei2cISR = handler;
 }
 

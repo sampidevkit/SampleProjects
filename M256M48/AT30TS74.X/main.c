@@ -1,29 +1,53 @@
-#include "mcc_generated_files/system.h"
-#include "mcc_generated_files/watchdog.h"
-#include "mcc_generated_files/drivers/i2c_simple_master.h"
-
-#define TICK_PER_MS 12000
+#include "libcomp.h"
 
 int main(void)
 {
-    uint32_t tick;
+    int32_t tmp;
+    tick_t tick;
 
     SYSTEM_Initialize();
-    tick=_CP0_GET_COUNT();
+    Tick_Reset(tick);
+    LED1_SetLow();
+    LED2_SetHigh();
+    tmp=0;
+
+    do
+    {
+        if(Tick_Is_Over(&tick, 100))
+        {
+            tmp++;
+            LED1_Toggle();
+            LED2_Toggle();
+            WATCHDOG_TimerClear();
+        }
+    }
+    while(tmp<30);
+
+    LED1_SetLow();
+    LED2_SetLow();
+    USBDeviceAttach();
 
     while(1)
     {
-        if((_CP0_GET_COUNT()-tick)>1000*TICK_PER_MS)
+        if(BUTTON_Is_Pressed())
         {
-            uint8_t data[2];
+            LED1_SetHigh();
+            LED2_SetHigh();
+            while(1);
+        }
+
+        if(Tick_Is_Over(&tick, 1000))
+        {
+
+            float temper;
+            uint8_t data[2]={0, 0};
             uint8_t reg=0x00;
 
             WATCHDOG_TimerClear();
-            i2c_writeNBytes(0x48, &reg, 1);
-            i2c_readNBytes(0x48, &data[0], 2);
-
-            int32_t tmp;
-            float temper;
+            LED1_Toggle();
+            LED2_SetHigh();
+            //i2c_writeNBytes(0x48, &reg, 1);
+            //i2c_readNBytes(0x48, &data[0], 2);
 
             tmp=data[0];
             tmp<<=8;
@@ -31,7 +55,7 @@ int main(void)
 
             if(tmp&0x8000) // Temperature<0
             {
-                tmp>>=7;// 9bit mode
+                tmp>>=7; // 9bit mode
                 tmp-=512;
                 temper=tmp;
                 temper*=0.5f;
@@ -44,8 +68,10 @@ int main(void)
             }
 
             printf("\nT=%.1f%cC\n", temper, 0xB0);
-            tick=_CP0_GET_COUNT();
+            LED2_SetLow();
         }
+
+        USB_CDC_Tasks();
     }
 
     return 1;

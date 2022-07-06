@@ -55,29 +55,14 @@ void INTERRUPT_Initialize (void)
     // Enable Multi Vector Configuration
     INTCONbits.MVEC = 1;
     
-    //    MICI: I2C 1 Master
+    //    CTI: Core Timer
     //    Priority: 1
-        IPC16bits.I2C1MIP = 1;
+        IPC0bits.CTIP = 1;
     //    Sub Priority: 0
-        IPC16bits.I2C1MIS = 0;
-    //    SICI: I2C 1 Slave
-    //    Priority: 1
-        IPC16bits.I2C1SIP = 1;
+        IPC0bits.CTIS = 0;
+    //    USBI: USB
+    //    Priority: 7
+        IPC7bits.USBIP = 7;
     //    Sub Priority: 0
-        IPC16bits.I2C1SIS = 0;
-    //    UERI: UART 2 Error
-    //    Priority: 1
-        IPC14bits.U2EIP = 1;
-    //    Sub Priority: 0
-        IPC14bits.U2EIS = 0;
-    //    UTXI: UART 2 Transmission
-    //    Priority: 1
-        IPC14bits.U2TXIP = 1;
-    //    Sub Priority: 0
-        IPC14bits.U2TXIS = 0;
-    //    URXI: UART 2 Reception
-    //    Priority: 1
-        IPC14bits.U2RXIP = 1;
-    //    Sub Priority: 0
-        IPC14bits.U2RXIS = 0;
+        IPC7bits.USBIS = 0;
 }
