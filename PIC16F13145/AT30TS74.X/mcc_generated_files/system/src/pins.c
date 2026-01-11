@@ -34,7 +34,6 @@
 
 #include "../pins.h"
 
-void (*SW_InterruptHandler)(void);
 
 void PIN_MANAGER_Initialize(void)
 {
@@ -42,29 +41,29 @@ void PIN_MANAGER_Initialize(void)
     LATx registers
     */
     LATA = 0x0;
-    LATB = 0x50;
+    LATB = 0x70;
     LATC = 0x10;
 
     /**
     TRISx registers
     */
     TRISA = 0x37;
-    TRISB = 0xF0;
+    TRISB = 0xD0;
     TRISC = 0xEB;
 
     /**
     ANSELx registers
     */
     ANSELA = 0x37;
-    ANSELB = 0xA0;
+    ANSELB = 0x80;
     ANSELC = 0xC3;
 
     /**
     WPUx registers
     */
     WPUA = 0x0;
-    WPUB = 0x0;
-    WPUC = 0x8;
+    WPUB = 0x50;
+    WPUC = 0x0;
   
     /**
     ODx registers
@@ -83,7 +82,7 @@ void PIN_MANAGER_Initialize(void)
     INLVLx registers
     */
     INLVLA = 0x3F;
-    INLVLB = 0xA0;
+    INLVLB = 0x80;
     INLVLC = 0xC3;
 
     /**
@@ -110,52 +109,14 @@ void PIN_MANAGER_Initialize(void)
     IOCBN = 0x0;
     IOCBF = 0x0;
     IOCCP = 0x0;
-    IOCCN = 0x8;
+    IOCCN = 0x0;
     IOCCF = 0x0;
 
-    SW_SetInterruptHandler(SW_DefaultInterruptHandler);
 
-    // Enable PIE0bits.IOCIE interrupt 
-    PIE0bits.IOCIE = 1; 
 }
   
 void PIN_MANAGER_IOC(void)
 {
-    // interrupt on change for pin SW}
-    if(IOCCFbits.IOCCF3 == 1)
-    {
-        SW_ISR();  
-    }
-}
-   
-/**
-   SW Interrupt Service Routine
-*/
-void SW_ISR(void) {
-
-    // Add custom IOCCF3 code
-
-    // Call the interrupt handler for the callback registered at runtime
-    if(SW_InterruptHandler)
-    {
-        SW_InterruptHandler();
-    }
-    IOCCFbits.IOCCF3 = 0;
-}
-
-/**
-  Allows selecting an interrupt handler for IOCCF3 at application runtime
-*/
-void SW_SetInterruptHandler(void (* InterruptHandler)(void)){
-    SW_InterruptHandler = InterruptHandler;
-}
-
-/**
-  Default interrupt handler for IOCCF3
-*/
-void SW_DefaultInterruptHandler(void){
-    // add your SW interrupt custom code
-    // or set custom function using SW_SetInterruptHandler()
 }
 /**
  End of File

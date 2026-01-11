@@ -68,6 +68,25 @@
 #define QWIIC_SDA_SetOpenDrain()       do { ODCONBbits.ODCB4 = 1; } while(0)
 #define QWIIC_SDA_SetAnalogMode()      do { ANSELBbits.ANSB4 = 1; } while(0)
 #define QWIIC_SDA_SetDigitalMode()     do { ANSELBbits.ANSB4 = 0; } while(0)
+// get/set IO_RB5 aliases
+#define VSEN_EN_TRIS                 TRISBbits.TRISB5
+#define VSEN_EN_LAT                  LATBbits.LATB5
+#define VSEN_EN_PORT                 PORTBbits.RB5
+#define VSEN_EN_WPU                  WPUBbits.WPUB5
+#define VSEN_EN_OD                   ODCONBbits.ODCB5
+#define VSEN_EN_ANS                  ANSELBbits.ANSB5
+#define VSEN_EN_SetHigh()            do { LATBbits.LATB5 = 1; } while(0)
+#define VSEN_EN_SetLow()             do { LATBbits.LATB5 = 0; } while(0)
+#define VSEN_EN_Toggle()             do { LATBbits.LATB5 = ~LATBbits.LATB5; } while(0)
+#define VSEN_EN_GetValue()           PORTBbits.RB5
+#define VSEN_EN_SetDigitalInput()    do { TRISBbits.TRISB5 = 1; } while(0)
+#define VSEN_EN_SetDigitalOutput()   do { TRISBbits.TRISB5 = 0; } while(0)
+#define VSEN_EN_SetPullup()          do { WPUBbits.WPUB5 = 1; } while(0)
+#define VSEN_EN_ResetPullup()        do { WPUBbits.WPUB5 = 0; } while(0)
+#define VSEN_EN_SetPushPull()        do { ODCONBbits.ODCB5 = 0; } while(0)
+#define VSEN_EN_SetOpenDrain()       do { ODCONBbits.ODCB5 = 1; } while(0)
+#define VSEN_EN_SetAnalogMode()      do { ANSELBbits.ANSB5 = 1; } while(0)
+#define VSEN_EN_SetDigitalMode()     do { ANSELBbits.ANSB5 = 0; } while(0)
 // get/set IO_RB6 aliases
 #define QWIIC_SCL_TRIS                 TRISBbits.TRISB6
 #define QWIIC_SCL_LAT                  LATBbits.LATB6
@@ -125,7 +144,6 @@
 #define SW_SetOpenDrain()       do { ODCONCbits.ODCC3 = 1; } while(0)
 #define SW_SetAnalogMode()      do { ANSELCbits.ANSC3 = 1; } while(0)
 #define SW_SetDigitalMode()     do { ANSELCbits.ANSC3 = 0; } while(0)
-#define RC3_SetInterruptHandler  SW_SetInterruptHandler
 // get/set IO_RC4 aliases
 #define DBG_TXD_TRIS                 TRISCbits.TRISC4
 #define DBG_TXD_LAT                  LATCbits.LATC4
@@ -179,46 +197,6 @@ void PIN_MANAGER_Initialize (void);
  * @return none
  */
 void PIN_MANAGER_IOC(void);
-
-/**
- * @ingroup  pinsdriver
- * @brief Interrupt on Change Handler for the SW pin functionality
- * @param none
- * @return none
- */
-void SW_ISR(void);
-
-/**
- * @ingroup  pinsdriver
- * @brief Interrupt Handler Setter for SW pin interrupt-on-change functionality.
- *        Allows selecting an interrupt handler for SW at application runtime.
- * @pre Pins intializer called
- * @param InterruptHandler function pointer.
- * @return none
- */
-void SW_SetInterruptHandler(void (* InterruptHandler)(void));
-
-/**
- * @ingroup  pinsdriver
- * @brief Dynamic Interrupt Handler for SW pin.
- *        This is a dynamic interrupt handler to be used together with the SW_SetInterruptHandler() method.
- *        This handler is called every time the SW ISR is executed and allows any function to be registered at runtime.
- * @pre Pins intializer called
- * @param none
- * @return none
- */
-extern void (*SW_InterruptHandler)(void);
-
-/**
- * @ingroup  pinsdriver
- * @brief Default Interrupt Handler for SW pin. 
- *        This is a predefined interrupt handler to be used together with the SW_SetInterruptHandler() method.
- *        This handler is called every time the SW ISR is executed. 
- * @pre Pins intializer called
- * @param none
- * @return none
- */
-void SW_DefaultInterruptHandler(void);
 
 
 #endif // PINS_H

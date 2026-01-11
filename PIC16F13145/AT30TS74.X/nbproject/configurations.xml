@@ -7,10 +7,6 @@
       <logicalFolder name="f2" displayName="Cfg" projectFiles="true">
         <itemPath>cfg/Project_Cfg.h</itemPath>
       </logicalFolder>
-      <logicalFolder name="f1" displayName="Library" projectFiles="true">
-        <itemPath>../../Library/AT30TS74.h</itemPath>
-        <itemPath>../../Library/LibDef.h</itemPath>
-      </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
@@ -48,10 +44,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f2" displayName="Cfg" projectFiles="true">
-        <itemPath>cfg/AT30TS74_Cfg.c</itemPath>
-      </logicalFolder>
-      <logicalFolder name="f1" displayName="Library" projectFiles="true">
-        <itemPath>../../Library/AT30TS74.c</itemPath>
       </logicalFolder>
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
@@ -134,8 +126,7 @@
         <property key="default-char-type" value="true"/>
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
-        <property key="extra-include-directories"
-                  value="cfg;mcc_generated_files;..\..\Library"/>
+        <property key="extra-include-directories" value="mcc_generated_files"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
@@ -255,6 +246,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="F:/SampleProjects/PIC16F13145/AT30TS74.X/debug/default/AT30TS74_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"
@@ -327,8 +320,6 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-1fff"/>
         <property key="poweroptions.powerenable" value="false"/>
-        <property key="programmerToGoFilePath"
-                  value="F:/SampleProjects/PIC16F13145/AT30TS74.X/debug/default/AT30TS74_ptg"/>
         <property key="programoptions.eraseb4program" value="true"/>
         <property key="programoptions.preservedataflash" value="false"/>
         <property key="programoptions.preservedataflash.ranges"

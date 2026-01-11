@@ -2,8 +2,8 @@
 
 manifest_file_version: 1.0.0
 project: AT30TS74
-creation_date: 2026-01-10T14:24:46.797+07:00[Asia/Bangkok]
-operating_system: Windows 11
+creation_date: 2026-01-11T17:16:50.471+07:00[Asia/Bangkok]
+operating_system: Windows 10
 mcc_mode: IDE
 mcc_mode_version: v6.25
 device_name: PIC16F13145
