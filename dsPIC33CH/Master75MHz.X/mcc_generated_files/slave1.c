@@ -123,9 +123,9 @@
 
 #include "slave1.h"
 #include <libpic30.h>
-#include "Slave.h"
+#include "Slave100MHz.h"
 
-#define SLAVE_IMAGE     Slave
+#define SLAVE_IMAGE     Slave100MHz
 #define SLAVE_NUMBER    1
 
 /*

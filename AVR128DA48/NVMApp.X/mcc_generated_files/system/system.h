@@ -10,7 +10,7 @@
  * @version Driver Version 1.0.3
  *
  * @version Package Version 4.3.0
-*/
+ */
 /*
 © [2026] Microchip Technology Inc. and its subsidiaries.
 
@@ -30,7 +30,7 @@
     TOTAL LIABILITY ON ALL CLAIMS RELATED TO THE SOFTWARE WILL NOT 
     EXCEED AMOUNT OF FEES, IF ANY, YOU PAID DIRECTLY TO MICROCHIP FOR 
     THIS SOFTWARE.
-*/
+ */
 
 
 #ifndef MCC_H
@@ -49,13 +49,16 @@ extern "C" {
 #include "../system/interrupt.h"
 #include "../system/clock.h"
 #include "../reset/rstctrl.h"
-/**
- * @ingroup systemdriver
- * @brief Initializes the System module. This routine is called only once during system initialization, before calling any other API.
- * @param None.
- * @return None.
-*/
-void SYSTEM_Initialize(void);
+
+#include <avr/wdt.h>
+#include <util/delay.h>
+    /**
+     * @ingroup systemdriver
+     * @brief Initializes the System module. This routine is called only once during system initialization, before calling any other API.
+     * @param None.
+     * @return None.
+     */
+    void SYSTEM_Initialize(void);
 
 #ifdef __cplusplus
 }
@@ -63,4 +66,4 @@ void SYSTEM_Initialize(void);
 #endif	/* MCC_H */
 /**
  End of File
-*/
+ */

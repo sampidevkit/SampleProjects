@@ -1,0 +1,5 @@
+F:/SampleProjects/AVRDU/AVRDU/_build/AVRDU/default/CMakeFiles/AVRDU_default_default_XC8_assemblePreprocess.dir
+F:/SampleProjects/AVRDU/AVRDU/_build/AVRDU/default/CMakeFiles/AVRDU_default_default_XC8_compile.dir
+F:/SampleProjects/AVRDU/AVRDU/_build/AVRDU/default/CMakeFiles/AVRDU_default_image_pnYJdkfx.dir
+F:/SampleProjects/AVRDU/AVRDU/_build/AVRDU/default/CMakeFiles/edit_cache.dir
+F:/SampleProjects/AVRDU/AVRDU/_build/AVRDU/default/CMakeFiles/rebuild_cache.dir

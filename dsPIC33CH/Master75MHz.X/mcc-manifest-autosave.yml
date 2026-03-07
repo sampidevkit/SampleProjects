@@ -2,15 +2,15 @@
 
 manifest_file_version: 1.0.0
 project: Master75MHz
-creation_date: 2025-12-20T08:47:10.616+07:00[Asia/Bangkok]
+creation_date: 2026-01-30T17:07:48.325+07:00[Asia/Bangkok]
 operating_system: Windows 11
 mcc_mode: IDE
-mcc_mode_version: v6.25
+mcc_mode_version: v6.30
 device_name: dsPIC33CH128MP205
 compiler: XC16 2.10
-mcc_version: 5.6.3
-mcc_core_version: 5.8.3
-content_manager_version: 6.0.3
+mcc_version: 5.6.4
+mcc_core_version: 5.8.4
+content_manager_version: 6.0.4
 is_mcc_offline: false
 is_using_prerelease_versions: false
 mcc_content_registries: https://registry.npmjs.org/

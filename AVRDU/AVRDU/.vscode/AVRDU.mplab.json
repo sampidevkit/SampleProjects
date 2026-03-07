@@ -1,0 +1,133 @@
+{
+    "version": "1.8",
+    "configurations": [
+        {
+            "name": "default",
+            "id": "conf1",
+            "device": "AVR64DU28",
+            "imagePath": "./out/AVRDU/default.elf",
+            "packs": [
+                {
+                    "name": "AVR-Dx_DFP",
+                    "vendor": "Microchip",
+                    "version": "2.7.321"
+                }
+            ],
+            "fileSet": "default",
+            "toolchain": "default-XC8"
+        }
+    ],
+    "propertyGroups": [
+        {
+            "name": "default-XC8",
+            "type": "toolchain",
+            "provider": "microchip.toolchains:xc8@3.10",
+            "properties": {
+                "compiler.isolate-each-function": true,
+                "compiler.optimization-level": "-O1",
+                "compiler.place-data-into-section": true,
+                "linker.heap-size": "0",
+                "linker.remove-unused-sections": true,
+                "compiler++.isolate-each-function": true,
+                "compiler++.optimization-level": "-O1",
+                "HI-TECH-COMP.extra-include-directories": [
+                    "My_MCC_Config/mcc/mcc_generated_files/usb",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc/circular_buffer",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_hid",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_vendor"
+                ],
+                "AVR-Global.common-include-directories": [
+                    "My_MCC_Config/mcc/mcc_generated_files/usb",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc/circular_buffer",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_hid",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral",
+                    "My_MCC_Config/mcc/mcc_generated_files/usb/usb_vendor"
+                ]
+            }
+        }
+    ],
+    "fileSets": [
+        {
+            "name": "default",
+            "files": [
+                {
+                    "include": "**/*",
+                    "exclude": "**/(_build|out|cmake|.vscode)/**/*"
+                },
+                "My_MCC_Config/mcc/mcc_generated_files/system/src/clock.c",
+                "My_MCC_Config/mcc/mcc_generated_files/system/clock.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/src/interrupt.c",
+                "My_MCC_Config/mcc/mcc_generated_files/system/interrupt.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/src/syscfg.c",
+                "My_MCC_Config/mcc/mcc_generated_files/system/syscfg.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/src/usb0.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral/usb_peripheral_avr_du.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral/usb_peripheral_read_write.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral/usb_peripheral_endpoint.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral/usb_peripheral_read_write.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb0.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral/usb_peripheral.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral/usb_peripheral_endpoint.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_peripheral/usb_peripheral.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/ccp.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/src/protected_io.S",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/compiler.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/assembler/iar.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/protected_io.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/atomic.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/system.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/assembler/gas.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/assembler.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/config_bits.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/utils_assert.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/src/system.c",
+                "My_MCC_Config/mcc/mcc_generated_files/system/src/config_bits.c",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/utils.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/utils/interrupt_avr8.h",
+                "My_MCC_Config/mcc/main.c",
+                "My_MCC_Config/mcc/mcc_generated_files/system/pins.h",
+                "My_MCC_Config/mcc/mcc_generated_files/system/src/pins.c",
+                "My_MCC_Config/mcc/mcc_generated_files/system/port.h",
+                "My_MCC_Config/mcc/mcc_generated_files/uart/uart_drv_interface.h",
+                "My_MCC_Config/mcc/mcc_generated_files/uart/uart_types.h",
+                "My_MCC_Config/mcc/mcc_generated_files/uart/usart0.h",
+                "My_MCC_Config/mcc/mcc_generated_files/uart/src/usart0.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc/usb_cdc.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_device.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc/usb_cdc.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_descriptors.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_descriptors.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_descriptors.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests_interface.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_common_elements.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_protocol_headers.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_events.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_descriptors.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_transfer.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc/usb_protocol_cdc.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc/circular_buffer/circular_buffer.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_config.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests_endpoint.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_cdc/circular_buffer/circular_buffer.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_transfer.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests_interface.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_events.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests_device.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests_endpoint.c",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_common/usb_core_requests_device.h",
+                "My_MCC_Config/mcc/mcc_generated_files/usb/usb_device.h",
+                "My_MCC_Config/mcc/mcc_generated_files/uart/usart1.h",
+                "My_MCC_Config/mcc/mcc_generated_files/uart/src/usart1.c"
+            ]
+        }
+    ]
+}

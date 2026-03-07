@@ -11,7 +11,8 @@
                 <make-dep-project>../NVMBld.X</make-dep-project>
             </make-dep-projects>
             <sourceRootList>
-                <sourceRootElem>mcc_generated_files/nvm</sourceRootElem>
+                <sourceRootElem>../NVMCommon</sourceRootElem>
+                <sourceRootElem>mcc_generated_files</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
