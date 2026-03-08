@@ -19,20 +19,8 @@ int main(void)
 
         if(SW0_IsPressed())
         {
-            uint16_t key=FLASH_ReadWord(APPDATA_BEGIN_ADDR);
-
             printf("\r\nSW0 is pressed");
-
-            if(key==0xFFFF)
-            {
-                printf("\r\nWrite Key @ %04X", (APPDATA_BEGIN_ADDR>>1));
-                //FLASH_PageErase(FLASH_ErasePageAddressGet(APPDATA_BEGIN_ADDR));
-                FLASH_Write(APPDATA_BEGIN_ADDR, 0x55AA);
-            }
-            else
-            {
-                printf("\r\nRead Key @ %04X: %04X", (APPDATA_BEGIN_ADDR>>1), key);
-            }
+            Test_AppData();
         }
     }
 

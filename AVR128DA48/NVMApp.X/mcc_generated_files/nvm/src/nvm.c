@@ -38,7 +38,7 @@ void NVM_Initialize(void)
     NVM_StatusClear();
 
     //APPCODEWP disabled; APPDATAWP disabled; BOOTRP enabled; FLMAP SECTION0; FLMAPLOCK disabled; 
-	ccp_write_io((void *)&NVMCTRL.CTRLB, 0x2);
+	ccp_write_io((void *)&NVMCTRL.CTRLB, 0x32);
 
     //EEREADY disabled; 
     NVMCTRL.INTCTRL = 0x0;

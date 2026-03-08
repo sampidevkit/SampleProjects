@@ -1,7 +1,7 @@
 #include "nvmcommon.h"
 #include "system/system.h"
 
-bool SW0_IsPressed(void)
+bool SW0_IsPressed(void) // <editor-fold defaultstate="collapsed" desc="Button">
 {
     static bool prv=0;
     static int cnt=0;
@@ -19,7 +19,7 @@ bool SW0_IsPressed(void)
         cnt=0;
 
     return 0;
-}
+} // </editor-fold>
 
 void Display_SystemInfo(void) // <editor-fold defaultstate="collapsed" desc="Display system info">
 {
@@ -33,15 +33,15 @@ void Display_SystemInfo(void) // <editor-fold defaultstate="collapsed" desc="Dis
             "\r\nRel: " __DATE__ "-" __TIME__);
 
 #if !defined(__APPLICATION__)
-    printf("\r\nBoot: %04X", BOOT_BEGIN_ADDR>>1);
+    printf("\r\nBoot: %04X", (uint16_t)(BOOT_BEGIN_ADDR>>1));
     printf(" - %04X", (uint16_t) (BOOT_END_ADDR>>1));
     printf(" : %ld bytes", ((uint32_t) BOOT_PAGE_SIZE*(uint32_t) PROGMEM_PAGE_SIZE));
 
-    printf("\r\nCode: %04X", APPCODE_BEGIN_ADDR>>1);
+    printf("\r\nCode: %04X", (uint16_t)(APPCODE_BEGIN_ADDR>>1));
     printf(" - %04X", (uint16_t) (APPCODE_END_ADDR>>1));
     printf(" : %ld bytes", ((uint32_t) APPCODE_PAGE_SIZE*(uint32_t) PROGMEM_PAGE_SIZE));
 
-    printf("\r\nData: %04X", APPDATA_BEGIN_ADDR>>1);
+    printf("\r\nData: %04X", (uint16_t)(APPDATA_BEGIN_ADDR>>1));
     printf(" - %04X", (uint16_t) (APPDATA_END_ADDR>>1));
     printf(" : %ld bytes", ((uint32_t) APPDATA_PAGE_SIZE*(uint32_t) PROGMEM_PAGE_SIZE));
 
@@ -138,11 +138,67 @@ void BLD_Jump2App(void) // <editor-fold defaultstate="collapsed" desc="Jump to a
 
     if(0xFFFF!=opcode)
     {
-        printf("\r\nOpcode %04X", APPCODE_BEGIN_ADDR>>1);
+        printf("\r\nOpcode %04X", (uint16_t)(APPCODE_BEGIN_ADDR>>1));
         printf(" : %04X", opcode);
         _delay_ms(100);
 
-        NVMCTRL.CTRLB=NVMCTRL_BOOTRP_bm; // Enable Boot Section Lock
+        //NVMCTRL.CTRLB=NVMCTRL_BOOTRP_bm; // Enable Boot Section Lock
+        ccp_write_io((void *) &NVMCTRL.CTRLB, 0x32);
         pgm_jmp_far(APPCODE_BEGIN_ADDR>>1); // Jump to application, located immediately after boot section
+    }
+} // </editor-fold>
+
+void Test_AppData(void) // <editor-fold defaultstate="collapsed" desc="App data">
+{
+    uint32_t WR_ADDR=APPDATA_BEGIN_ADDR;
+    uint16_t key=FLASH_ReadWord(WR_ADDR);
+
+    printf("\r\nNVMCTRL.CTRLB=%02X", NVMCTRL.CTRLB);
+    printf("\r\nNVMCTRL.STATUS=%02X - ", NVMCTRL.STATUS);
+
+    uint8_t error=(NVMCTRL.STATUS&NVMCTRL_ERROR_gm)>>NVMCTRL_ERROR_gp;
+
+    switch(error)
+    {
+        case 0:
+            printf("No error");
+            break;
+
+        case 1:
+            printf("The selected command is not supported");
+            break;
+
+        case 2:
+            printf("Attempt to write a section that is protected");
+            break;
+
+        case 3:
+            printf("A new write/erase command was selected while a write/erase command is already ongoing");
+            break;
+
+        default:
+            printf("Reserved");
+            break;
+    }
+
+    if(key==0xFFFF)
+    {
+        printf("\r\nWrite Key @ %04X", (uint16_t) (WR_ADDR>>1));
+
+        DISABLE_INTERRUPTS();
+        NVM_StatusClear();
+        //FLASH_PageErase(FLASH_ErasePageAddressGet(WR_ADDR));
+        if(FLASH_Write(WR_ADDR, 0x55AA))
+            printf(" - Error");
+        else
+            printf(" - Success");
+
+#if defined(__APPLICATION__)
+        ENABLE_INTERRUPTS();
+#endif
+    }
+    else
+    {
+        printf("\r\nRead Key @ %04X: %04X", (uint16_t) (WR_ADDR>>1), key);
     }
 } // </editor-fold>
