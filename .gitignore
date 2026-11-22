@@ -59,3 +59,4 @@ debug/
 build/
 Project Backups/
 __history/
+.generated_files/
