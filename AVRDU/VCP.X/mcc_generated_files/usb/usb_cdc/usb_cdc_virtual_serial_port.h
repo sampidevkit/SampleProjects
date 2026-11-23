@@ -43,9 +43,8 @@
  * @enum CDC_RETURN_CODE_t
  * @brief Type define for the CDC return codes.
  */
-typedef enum CDC_RETURN_CODE_enum
-{
-    CDC_SUCCESS = 0,      /**<Action successfully executed*/
+typedef enum CDC_RETURN_CODE_enum {
+    CDC_SUCCESS = 0, /**<Action successfully executed*/
     CDC_BUFFER_FULL = -1, /**<Error triggered by full CDC buffer*/
     CDC_BUFFER_EMPTY = -2 /**<Error triggered by empty CDC buffer*/
 } CDC_RETURN_CODE_t;
@@ -82,6 +81,15 @@ CDC_RETURN_CODE_t USB_CDCRead(uint8_t *data);
  * @return status - Result of the called circular buffer function
  */
 CDC_RETURN_CODE_t USB_CDCWrite(uint8_t data);
+
+/**
+ * @ingroup usb_cdc
+ * @brief Checks if the transmit buffer is full.
+ * @param None.
+ * @retval 0 - Buffer not full
+ * @retval 1 - Buffer full
+ */
+bool USB_CDCRxReady(void);
 
 /**
  * @ingroup usb_cdc

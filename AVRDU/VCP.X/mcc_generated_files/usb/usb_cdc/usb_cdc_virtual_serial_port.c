@@ -135,6 +135,11 @@ CDC_RETURN_CODE_t USB_CDCWrite(uint8_t data)
     return CIRCBUF_Enqueue(&usbCDCTransmitBuffer, data);
 }
 
+bool USB_CDCRxReady(void)
+{
+    return !CIRCBUF_Empty(&usbCDCReceiveBuffer) && !USB_PipeStatusIsBusy(CDCRxPipe);
+}
+
 bool USB_CDCTxBusy(void)
 {
     return CIRCBUF_Full(&usbCDCTransmitBuffer) || USB_PipeStatusIsBusy(CDCTxPipe);

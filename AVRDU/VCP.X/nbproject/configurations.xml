@@ -1,15 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="65">
   <logicalFolder name="root" displayName="root" projectFiles="true">
+    <logicalFolder name="f1" displayName="Documents" projectFiles="true">
+      <itemPath>AVR64DU-28-32-DataSheet-DS40002548.pdf</itemPath>
+      <itemPath>PIC16DevKit.pdf</itemPath>
+    </logicalFolder>
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="MCC Generated Files"
+                     displayName="MCC Generated Files"
+                     projectFiles="true">
+        <logicalFolder name="nvm" displayName="nvm" projectFiles="true">
+          <itemPath>mcc_generated_files/nvm/nvm.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="power" displayName="power" projectFiles="true">
+          <itemPath>mcc_generated_files/power/power.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="reset" displayName="reset" projectFiles="true">
+          <itemPath>mcc_generated_files/reset/rstctrl.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="system" displayName="system" projectFiles="true">
+          <logicalFolder name="utils" displayName="utils" projectFiles="true">
+            <logicalFolder name="assembler" displayName="assembler" projectFiles="true">
+              <itemPath>mcc_generated_files/system/utils/assembler/gas.h</itemPath>
+              <itemPath>mcc_generated_files/system/utils/assembler/iar.h</itemPath>
+            </logicalFolder>
+            <itemPath>mcc_generated_files/system/utils/utils_assert.h</itemPath>
+            <itemPath>mcc_generated_files/system/utils/atomic.h</itemPath>
+            <itemPath>mcc_generated_files/system/utils/assembler.h</itemPath>
+            <itemPath>mcc_generated_files/system/utils/compiler.h</itemPath>
+            <itemPath>mcc_generated_files/system/utils/utils.h</itemPath>
+            <itemPath>mcc_generated_files/system/utils/interrupt_avr8.h</itemPath>
+          </logicalFolder>
+          <itemPath>mcc_generated_files/system/syscfg.h</itemPath>
+          <itemPath>mcc_generated_files/system/interrupt.h</itemPath>
+          <itemPath>mcc_generated_files/system/clock.h</itemPath>
+          <itemPath>mcc_generated_files/system/ccp.h</itemPath>
+          <itemPath>mcc_generated_files/system/config_bits.h</itemPath>
+          <itemPath>mcc_generated_files/system/system.h</itemPath>
+          <itemPath>mcc_generated_files/system/protected_io.h</itemPath>
+          <itemPath>mcc_generated_files/system/pins.h</itemPath>
+          <itemPath>mcc_generated_files/system/port.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="timer" displayName="timer" projectFiles="true">
+          <itemPath>mcc_generated_files/timer/rtc.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="usb" displayName="usb" projectFiles="true">
+          <logicalFolder name="usb_cdc" displayName="usb_cdc" projectFiles="true">
+            <logicalFolder name="circular_buffer"
+                           displayName="circular_buffer"
+                           projectFiles="true">
+              <itemPath>mcc_generated_files/usb/usb_cdc/circular_buffer/circular_buffer.h</itemPath>
+            </logicalFolder>
+            <itemPath>mcc_generated_files/usb/usb_cdc/usb_cdc.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_cdc/usb_cdc_virtual_serial_port.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_cdc/usb_protocol_cdc.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="usb_common" displayName="usb_common" projectFiles="true">
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core_requests_interface.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core_requests_endpoint.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_common_elements.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core_requests_device.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_protocol_headers.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core_requests.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core_descriptors.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core_events.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_common/usb_core_transfer.h</itemPath>
+          </logicalFolder>
+          <logicalFolder name="usb_peripheral"
+                         displayName="usb_peripheral"
+                         projectFiles="true">
+            <itemPath>mcc_generated_files/usb/usb_peripheral/usb_peripheral_avr_du.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_peripheral/usb_peripheral_endpoint.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_peripheral/usb_peripheral.h</itemPath>
+            <itemPath>mcc_generated_files/usb/usb_peripheral/usb_peripheral_read_write.h</itemPath>
+          </logicalFolder>
+          <itemPath>mcc_generated_files/usb/usb_device.h</itemPath>
+          <itemPath>mcc_generated_files/usb/usb_descriptors.h</itemPath>
+          <itemPath>mcc_generated_files/usb/usb_config.h</itemPath>
+          <itemPath>mcc_generated_files/usb/usb0.h</itemPath>
+        </logicalFolder>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="true">
       <itemPath>Makefile</itemPath>
-      <itemPath>config.mc3</itemPath>
+      <itemPath>VCP.mc3</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +97,46 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="MCC Generated Files"
+                     displayName="MCC Generated Files"
+                     projectFiles="true">
+        <logicalFolder name="nvm" displayName="nvm" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="power" displayName="power" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="reset" displayName="reset" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="system" displayName="system" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="timer" displayName="timer" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+        <logicalFolder name="usb" displayName="usb" projectFiles="true">
+          <logicalFolder name="src" displayName="src" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="usb_cdc" displayName="usb_cdc" projectFiles="true">
+            <logicalFolder name="circular_buffer"
+                           displayName="circular_buffer"
+                           projectFiles="true">
+            </logicalFolder>
+          </logicalFolder>
+          <logicalFolder name="usb_common" displayName="usb_common" projectFiles="true">
+          </logicalFolder>
+          <logicalFolder name="usb_peripheral"
+                         displayName="usb_peripheral"
+                         projectFiles="true">
+          </logicalFolder>
+        </logicalFolder>
+      </logicalFolder>
       <logicalFolder name="mcc_generated_files"
                      displayName="mcc_generated_files"
                      projectFiles="true">
@@ -133,14 +252,15 @@
         <makeCustomizationPreStepEnabled>false</makeCustomizationPreStepEnabled>
         <makeUseCleanTarget>false</makeUseCleanTarget>
         <makeCustomizationPreStep></makeCustomizationPreStep>
-        <makeCustomizationPostStepEnabled>false</makeCustomizationPostStepEnabled>
-        <makeCustomizationPostStep></makeCustomizationPostStep>
+        <makeCustomizationPostStepEnabled>true</makeCustomizationPostStepEnabled>
+        <makeCustomizationPostStep>copy ${ImagePath} ".\LastBuild.${OUTPUT_SUFFIX}"</makeCustomizationPostStep>
         <makeCustomizationPutChecksumInUserID>false</makeCustomizationPutChecksumInUserID>
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
-        <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
+        <makeCustomizationNormalizeHexFile>true</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <HI-TECH-COMP>
         <property key="additional-warnings" value="true"/>
+        <property key="appendMe" value=""/>
         <property key="asmlist" value="true"/>
         <property key="call-prologues" value="false"/>
         <property key="default-bitfield-type" value="true"/>
@@ -148,27 +268,27 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
-                  value="mcc_generated_files;mcc_generated_files\usb;mcc_generated_files\usb\usb_cdc;mcc_generated_files\usb\usb_cdc\circular_buffer;mcc_generated_files\usb\usb_common;mcc_generated_files\usb\usb_peripheral"/>
+                  value="mcc_generated_files;mcc_generated_files\usb;mcc_generated_files\usb\usb_cdc;mcc_generated_files\usb\usb_cdc\circular_buffer;mcc_generated_files\usb\usb_common;mcc_generated_files\usb\usb_peripheral;mcc_generated_files/usb;mcc_generated_files/usb/usb_common;mcc_generated_files/usb/usb_peripheral;mcc_generated_files/usb/usb_vendor;mcc_generated_files/usb/usb_hid;mcc_generated_files/usb/usb_cdc;mcc_generated_files/usb/usb_cdc/circular_buffer"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>
         <property key="identifier-length" value="255"/>
         <property key="local-generation" value="false"/>
-        <property key="operation-mode" value="free"/>
+        <property key="operation-mode" value="pro"/>
         <property key="opt-xc8-compiler-strict_ansi" value="false"/>
         <property key="optimization-assembler" value="true"/>
         <property key="optimization-assembler-files" value="true"/>
         <property key="optimization-debug" value="false"/>
         <property key="optimization-invariant-enable" value="false"/>
         <property key="optimization-invariant-value" value="16"/>
-        <property key="optimization-level" value="-O1"/>
+        <property key="optimization-level" value="-Os"/>
         <property key="optimization-speed" value="false"/>
         <property key="optimization-stable-enable" value="false"/>
         <property key="preprocess-assembler" value="true"/>
         <property key="short-enums" value="true"/>
         <property key="tentative-definitions" value="-fno-common"/>
         <property key="undefine-macros" value=""/>
-        <property key="use-cci" value="false"/>
+        <property key="use-cci" value="true"/>
         <property key="use-iar" value="false"/>
         <property key="verbose" value="false"/>
         <property key="warning-level" value="-3"/>
@@ -177,15 +297,24 @@
       <HI-TECH-LINK>
         <property key="additional-options-checksum" value=""/>
         <property key="additional-options-checksumAVR" value=""/>
+        <property key="additional-options-checksumAVR2" value="0"/>
         <property key="additional-options-code-offset" value=""/>
         <property key="additional-options-command-line" value=""/>
         <property key="additional-options-errata" value=""/>
         <property key="additional-options-extend-address" value="false"/>
+        <property key="additional-options-fillAVR2" value="0"/>
         <property key="additional-options-trace-type" value=""/>
         <property key="additional-options-use-response-files" value="false"/>
         <property key="backup-reset-condition-flags" value="false"/>
         <property key="calibrate-oscillator" value="false"/>
         <property key="calibrate-oscillator-value" value="0x3400"/>
+        <property key="checksum-flash-options-addressce" value=""/>
+        <property key="checksum-flash-options-addresscs" value=""/>
+        <property key="checksum-flash-options-algorithmc"
+                  value="Select checksum algorithm"/>
+        <property key="checksum-flash-options-destc" value=""/>
+        <property key="checksum-flash-options-offsetc" value="0xFFFF"/>
+        <property key="checksum-flash-options-widthc" value="2"/>
         <property key="clear-bss" value="true"/>
         <property key="code-model-external" value="wordwrite"/>
         <property key="code-model-rom" value=""/>
@@ -201,12 +330,16 @@
         <property key="display-psect-usage" value="false"/>
         <property key="extra-lib-directories" value=""/>
         <property key="fill-flash-options-addr" value=""/>
+        <property key="fill-flash-options-addrfe" value=""/>
+        <property key="fill-flash-options-addrfs" value=""/>
         <property key="fill-flash-options-const" value=""/>
+        <property key="fill-flash-options-constf" value=""/>
         <property key="fill-flash-options-how" value="0"/>
         <property key="fill-flash-options-inc-const" value="1"/>
         <property key="fill-flash-options-increment" value=""/>
         <property key="fill-flash-options-seq" value=""/>
         <property key="fill-flash-options-what" value="0"/>
+        <property key="fill-flash-options-wwidthf" value="2"/>
         <property key="format-hex-file-for-download" value="false"/>
         <property key="initialize-data" value="true"/>
         <property key="input-libraries" value="libm"/>
@@ -346,6 +479,8 @@
         <property key="memories.programmemory" value="true"/>
         <property key="memories.programmemory.ranges" value="0-7fff"/>
         <property key="poweroptions.powerenable" value="false"/>
+        <property key="programmerToGoFilePath"
+                  value="D:/Github/SampleProjects/master/AVRDU/VCP.X/debug/default/VCP_ptg"/>
         <property key="programmerToGoImageName" value="VCP_ptg"/>
         <property key="programoptions.donoteraseauxmem" value="false"/>
         <property key="programoptions.eraseb4program" value="true"/>

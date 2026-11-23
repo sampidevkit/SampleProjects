@@ -25,31 +25,24 @@ int main(void)
     while(1)
     {
         ClrWdt();
-
-#if(1)
         status=USBDevice_Handle();
-#endif
-        // If USB error detected
+
         if(SUCCESS==status)
         {
-            // Tests if DTE is set and USB ready for transfer
             if(true==USB_CDCDataTerminalReady())
             {
-                // Checks that CDC TX buffer is not full or pipe is busy
-                if(false==USB_CDCTxBusy())
+                if(USB_CDCRxReady())
                 {
-                    // Retrieves CDC data if available and writes it back over CDC
-                    cdcStatus=USB_CDCRead(&cdcData);
+                    USB_CDCRead(&cdcData);
 
-                    if(CDC_SUCCESS==cdcStatus)
+                    if(false==USB_CDCTxBusy())
                     {
                         i=0;
                         LED_BUSY_SetLow();
-                        cdcStatus=USB_CDCWrite(cdcData);
+                        USB_CDCWrite(cdcData);
                     }
                 }
 
-                // Running CDC Virtual Serial Port handler
                 status=USB_CDCVirtualSerialPortHandler();
 
                 if(i<2000)
